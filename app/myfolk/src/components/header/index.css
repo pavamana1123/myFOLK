@@ -1,0 +1,13 @@
+.header_logo {
+    max-height:60%;
+    vertical-align: ;
+}
+
+.app_header {
+    grid-area: header;
+    height: 8vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
