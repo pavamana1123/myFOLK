@@ -1,6 +1,6 @@
 .header_logo {
     max-height:60%;
-    vertical-align: ;
+    vertical-align: middle;
 }
 
 .app_header {
@@ -9,5 +9,5 @@
 
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
