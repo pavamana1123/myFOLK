@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `myfolk` /*!40100 DEFAULT CHARACTER SET utf32 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `myfolk`;
+CREATE DATABASE  IF NOT EXISTS `iskconmy_folk` /*!40100 DEFAULT CHARACTER SET utf32 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `iskconmy_folk`;
 -- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
--- Host: localhost    Database: myfolk
+-- Host: localhost    Database: iskconmy_folk
 -- ------------------------------------------------------
 -- Server version	8.0.26
 
