@@ -41,6 +41,19 @@ CREATE TABLE `calendar` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `category` varchar(20) NOT NULL,
+  PRIMARY KEY (`category`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `contacts`
 --
 
@@ -69,9 +82,15 @@ CREATE TABLE `contacts` (
   `skills` varchar(45) DEFAULT NULL,
   `japaRounds` int DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
+  `source` varchar(45) DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`phone`),
   UNIQUE KEY `phone_UNIQUE` (`phone`),
-  UNIQUE KEY `secondaryPhone_UNIQUE` (`secondaryPhone`)
+  UNIQUE KEY `secondaryPhone_UNIQUE` (`secondaryPhone`),
+  KEY `source_idx` (`source`),
+  KEY `category_idx` (`category`),
+  CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `categories` (`category`),
+  CONSTRAINT `source` FOREIGN KEY (`source`) REFERENCES `sources` (`source`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -156,9 +175,24 @@ DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `name` varchar(20) NOT NULL,
   `phone` varchar(45) NOT NULL,
-  `role` enum('admin','caller') NOT NULL,
+  `admin` tinyint NOT NULL,
+  `user` tinyint DEFAULT NULL,
+  `caller` tinyint DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `sources`
+--
+
+DROP TABLE IF EXISTS `sources`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `sources` (
+  `source` varchar(20) NOT NULL,
+  PRIMARY KEY (`source`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -171,4 +205,4 @@ CREATE TABLE `roles` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-02 15:11:28
+-- Dump completed on 2021-12-04 14:28:36
