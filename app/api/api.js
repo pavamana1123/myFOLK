@@ -1,7 +1,5 @@
-function call(req, res){
+module.exports = (req, res) => {
     switch(req.get("endpoint")){
-
+        default:
     }
 }
-
-export default call 
