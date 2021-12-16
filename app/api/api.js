@@ -4,6 +4,8 @@ class API {
     }
 
     call(req, res) {
+
+        // console.log(req.body)
         
         var {body} = req
 
@@ -16,7 +18,7 @@ class API {
                   });
             case "login":
                 const {phone, passwordHash} = body
-                this.db.query(`SELECT * from contacts where phone="${phone}" and password="${passwordHash}"`, function (error, result) {
+                this.db.query(`SELECT password from roles where phone="${phone}"`, function (error, result) {
                     if (error) throw error;
                     if(result.length){
                         if(result.length==1){
