@@ -18,13 +18,13 @@ class API {
                   });
             case "login":
                 const {phone, passwordHash} = body
-                this.db.query(`SELECT password from roles where phone="${phone}"`, function (error, result) {
+                this.db.query(`SELECT name, phone, password, role from contacts where phone="${phone}"`, function (error, result) {
                     if (error) throw error;
                     if(result.length){
                         if(result.length==1){
                             if(result[0].password===passwordHash){
                                 res.status(200)
-                                res.send()
+                                res.send(result[0])
                             }else{
                                 res.status(400)
                                 res.send({"error":"incorrect password"})
