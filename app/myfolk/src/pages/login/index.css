@@ -1,0 +1,19 @@
+#login-form{
+    display: grid;
+}
+
+#login-logo {
+    width: 50vw;
+}
+
+#login-form{
+    display: grid;
+    row-gap: 30%;
+}
+
+#login-root {
+    height: 100vh;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+}

@@ -1,3 +1,35 @@
+:root {
+  --bg: #121b22;
+  --secondaryBg: #1f2c34;
+  --green: #00a884;
+}
+
+body {
+  background-color: (--bg);
+}
+
+input {
+  outline: 0;
+  border-width: 0 0 0.1rem;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: larger;
+}
+
+button {
+  background-color: var(--green);
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: larger;
+  padding: 2%;
+}
+
+input:focus {
+  border-color: var(--green)
+}
+
 .App {
   display: grid;
   grid-template-areas:
@@ -6,5 +38,5 @@
 }
 
 .app_header {
-  background-color: #1f2c34;
+  background-color: var(--bg);
 }
