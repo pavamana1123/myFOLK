@@ -4,12 +4,14 @@
 
 #login-logo {
     width: 60%;
+    padding-bottom: 20%;
 }
 
 #login-form {
     width: 80%;
     display: grid;
     row-gap: 30%;
+    padding-bottom: 40%;
 }
 
 #login-root {
