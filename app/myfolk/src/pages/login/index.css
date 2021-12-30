@@ -3,10 +3,11 @@
 }
 
 #login-logo {
-    width: 50vw;
+    width: 60%;
 }
 
-#login-form{
+#login-form {
+    width: 80%;
     display: grid;
     row-gap: 30%;
 }
@@ -14,6 +15,7 @@
 #login-root {
     height: 100vh;
     display: grid;
+    align-items: center;
+    justify-items: center;
     align-content: center;
-    justify-content: center;
 }
