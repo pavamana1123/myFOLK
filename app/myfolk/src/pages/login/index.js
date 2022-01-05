@@ -1,24 +1,31 @@
 import './index.css';
-import {useState} from 'react'
+import Spinner from '../../components/spinner';
+import {useState, useRef} from 'react'
 
 function Login() {
 
   var [submitState, setSubmitState] = useState(false)
+  const loginPhone = useRef(null)
+  const loginPass = useRef(null)
+
+  const onLogin = (e)=>{
+    e.preventDefault()
+    setSubmitState(true)
+  }
 
   return (
     <div id="login-root">
           <img id='login-logo' src="logo.png"/>
           <form id='login-form'>
-              <input ref='login-phone' type="tel" placeholder='Phone' pattern="[0-9]{10}"></input>
-              <input ref='login-pass' type='password' placeholder='Password'></input>
+              <input ref={loginPhone} type="tel" placeholder='Phone' pattern="[0-9]{10}"></input>
+              <input ref={loginPass} type='password' placeholder='Password'></input>
               <button disabled={submitState} onClick={onLogin}>Login</button>
+              <div className='login-spinner'><Spinner show={submitState} size={25}/></div>
           </form>
     </div>
   );
 }
 
-function onLogin(e) {
-  
-}
+
 
 export default Login;

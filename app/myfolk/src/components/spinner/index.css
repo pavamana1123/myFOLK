@@ -1,0 +1,25 @@
+.spinner-bg-circle {
+    border: 3px solid rgba(128, 128, 128, 0.397);
+    border-top: 3px solid var(--green);
+    border-right: 3px solid var(--green);
+    border-bottom: 3px solid var(--green);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    animation: spinner 1s ease-in-out infinite;
+    transition: opacity .5s;
+    opacity: 1;
+}
+
+.spinner-show {
+  opacity: 1;
+}
+
+.spinner-hide {
+  opacity: 0;
+}
+
+@keyframes spinner {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}

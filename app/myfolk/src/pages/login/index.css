@@ -21,3 +21,9 @@
     justify-items: center;
     align-content: center;
 }
+
+.login-spinner {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+}
