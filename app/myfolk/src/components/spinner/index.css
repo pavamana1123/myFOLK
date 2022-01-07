@@ -7,16 +7,16 @@
     height: 15px;
     border-radius: 50%;
     animation: spinner 1s ease-in-out infinite;
-    transition: opacity .5s;
+    transition: opacity 0.5s;
     opacity: 1;
 }
 
 .spinner-show {
-  opacity: 1;
+ opacity: 1;
 }
 
 .spinner-hide {
-  opacity: 0;
+ opacity: 0;
 }
 
 @keyframes spinner {

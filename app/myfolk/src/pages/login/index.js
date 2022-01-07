@@ -1,10 +1,13 @@
 import './index.css';
 import Spinner from '../../components/spinner';
 import {useState, useRef} from 'react'
+import Toast from '../../components/toast';
 
 function Login() {
 
   var [submitState, setSubmitState] = useState(false)
+  var [toastText, setToastText] = useState()
+  var [showToast, setShowToast] = useState(false)
   const loginPhone = useRef(null)
   const loginPass = useRef(null)
 
@@ -15,6 +18,7 @@ function Login() {
 
   return (
     <div id="login-root">
+          <Toast text={toastText} show={showToast}/>
           <img id='login-logo' src="logo.png"/>
           <form id='login-form'>
               <input ref={loginPhone} type="tel" placeholder='Phone' pattern="[0-9]{10}"></input>

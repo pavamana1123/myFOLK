@@ -1,8 +1,8 @@
 :root {
   --bg: #121b22;
   --secondaryBg: #1f2c34;
+  --toastBg: #6d6c6c71;
   --green: #00a884;
-  --dark-green: #008f702f;
 }
 
 body {
@@ -29,8 +29,7 @@ button {
 }
 
 button:disabled {
-  background-color: var(--dark-green);
-  color: grey;
+  opacity: 0.5;
 }
 
 input:focus {
