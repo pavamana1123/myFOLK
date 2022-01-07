@@ -2,6 +2,7 @@ import './index.css';
 import Spinner from '../../components/spinner';
 import {useState, useRef} from 'react'
 import Toast from '../../components/toast';
+import API from '../../api';
 
 function Login() {
 
@@ -14,6 +15,8 @@ function Login() {
   const onLogin = (e)=>{
     e.preventDefault()
     setSubmitState(true)
+
+    new API().call("/login", {})
   }
 
   return (
