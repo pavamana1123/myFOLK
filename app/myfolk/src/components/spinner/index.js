@@ -31,7 +31,4 @@ function Spinner(props) {
   );
 }
 
-export {
-  Spinner,
-  SpinnerCtl
-};
+export { Spinner, SpinnerCtl };

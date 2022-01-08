@@ -1,14 +1,15 @@
 .toast {
-  position: absolute;
+  position: fixed;
   background-color: var(--toastBg);
   color: white;
   padding: 2%;
   border-radius: 1000px;
-  width: 80%;
+  width: 60%;
   text-align: center;
   bottom: 10vh;
   transition: bottom .5s ease-in-out, opacity .5s ease-in-out;
   white-space: pre-wrap;
+  overflow: hidden;
 }
 
 .toast-show {
@@ -16,8 +17,7 @@
   opacity: 1;
 }
 
-
 .toast-hide {
-  bottom: -50vh;
+  bottom: -20vh;
   opacity: 0;
 }
