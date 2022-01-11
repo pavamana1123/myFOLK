@@ -2,7 +2,7 @@ import './index.css';
 import {Spinner, SpinnerCtl} from '../../components/spinner';
 import {useState, useRef} from 'react'
 import {Toast, ToastCtl} from '../../components/toast';
-// import API from '../../api';
+import API from '../../api';
 
 function Login() {
 
@@ -16,6 +16,8 @@ function Login() {
     e.preventDefault()
     setSubmitState(true)
     spinner.show()
+
+    // new API().call().then()
   }
 
 
