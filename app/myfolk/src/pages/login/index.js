@@ -4,8 +4,6 @@ import {useState, useRef} from 'react'
 import {Toast, ToastCtl} from '../../components/toast';
 // import API from '../../api';
 
-var k = 0
-
 function Login() {
 
   var [submitState, setSubmitState] = useState(false)
@@ -16,16 +14,8 @@ function Login() {
 
   const onLogin = (e)=>{
     e.preventDefault()
-    // setSubmitState(true)
+    setSubmitState(true)
     spinner.show()
-    k++
-    if(k%2==0){
-      console.log("show:", k)
-      toast.show(k)
-    }else{
-      console.log("hide:", k)
-      toast.hide()
-    }
   }
 
 

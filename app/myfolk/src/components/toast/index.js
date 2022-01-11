@@ -20,11 +20,25 @@ function Toast(props) {
   var [text, setText] = useState(props.text||"")
   var timerId = useRef(null)
 
+  const clearTimer = ()=>{
+    if(timerId.current){
+      clearTimeout(timerId.current)
+    }
+  }
+
+  const autoHide = ()=>{
+    timerId.current = setTimeout(()=>{
+      setShow(false)
+    }, 7500)
+  }
+
   var self = this
   useEffect(()=>{
     props.ctl.setShowFunc((t)=>{
+      clearTimer()
       setText.bind(self)(t)
       setShow.bind(self)(true)
+      autoHide()
     })
     props.ctl.setHideFunc(()=>{setShow.bind(self)(false)})
   },[])

@@ -4,7 +4,8 @@
   color: white;
   padding: 2%;
   border-radius: 1000px;
-  width: 60%;
+  max-width: 80%;
+  min-width: 30%;
   text-align: center;
   bottom: 10vh;
   transition: bottom .5s ease-in-out, opacity .5s ease-in-out;
