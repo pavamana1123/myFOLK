@@ -17,7 +17,15 @@ function Login() {
     setSubmitState(true)
     spinner.show()
 
-    // new API().call().then()
+    new API().call("/login",{
+      phone: "1",
+      password: "c4ca4238a0b923820dcc509a6f75849b_"
+    }).then((res)=>{
+      console.log(res.status, res.statusText)
+      res.json().then((r)=>{
+        console.log(r)
+      })
+    })
   }
 
 

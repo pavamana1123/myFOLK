@@ -11,22 +11,22 @@ class API {
 
         switch(req.get("endpoint")){
             
-            case "test":
+            case "/test":
                 this.db.query('SELECT * from contacts', function (error, result) {
                     if (error) throw error;
                     res.send(result)
                   });
-            case "login":
-                const {phone, passwordHash} = body
+            case "/login":
+                const {phone, password} = body
                 this.db.query(`SELECT name, phone, password, role from contacts where phone="${phone}"`, function (error, result) {
                     if (error) throw error;
                     if(result.length){
                         if(result.length==1){
-                            if(result[0].password===passwordHash){
+                            if(result[0].password===password){
                                 res.status(200)
                                 res.send(result[0])
                             }else{
-                                res.status(400)
+                                res.status(401)
                                 res.send({"error":"incorrect password"})
                             }
                         }else{
@@ -34,7 +34,7 @@ class API {
                             res.send({"error":`multiple users with same phone ${phone} were found`})
                         }
                     }else{
-                        res.status(400);
+                        res.status(401);
                         res.send({"error":"unauthorised user"})
                     }
                   });
