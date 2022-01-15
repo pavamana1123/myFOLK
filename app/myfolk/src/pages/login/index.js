@@ -3,6 +3,7 @@ import {Spinner, SpinnerCtl} from '../../components/spinner';
 import {useState, useRef} from 'react'
 import {Toast, ToastCtl} from '../../components/toast';
 import API from '../../api';
+const md5 = require("md5")
 
 function Login() {
 
@@ -18,13 +19,16 @@ function Login() {
     spinner.show()
 
     new API().call("/login",{
-      phone: "1",
-      password: "c4ca4238a0b923820dcc509a6f75849b_"
+      phone: loginPhone.current.value,
+      password: md5(loginPass.current.value)
     }).then((res)=>{
-      console.log(res.status, res.statusText)
-      res.json().then((r)=>{
-        console.log(r)
-      })
+      spinner.hide()
+      setSubmitState(false)
+      if(res.status==200){
+        // TODO
+      }else{
+        toast.show(res.error)
+      }
     })
   }
 

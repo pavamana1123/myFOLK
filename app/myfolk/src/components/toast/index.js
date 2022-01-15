@@ -29,7 +29,7 @@ function Toast(props) {
   const autoHide = ()=>{
     timerId.current = setTimeout(()=>{
       setShow(false)
-    }, 7500)
+    }, 5000)
   }
 
   var self = this

@@ -2,7 +2,7 @@
   position: fixed;
   background-color: var(--toastBg);
   color: white;
-  padding: 2%;
+  padding: 3%;
   border-radius: 1000px;
   max-width: 80%;
   min-width: 30%;

@@ -27,15 +27,15 @@ class API {
                                 res.send(result[0])
                             }else{
                                 res.status(401)
-                                res.send("Incorrect password")
+                                res.send({"error":"Incorrect password"})
                             }
                         }else{
                             res.status(500)
-                            res.send(`Multiple users with same phone ${phone} were found`)
+                            res.send({"error":`Multiple users with same phone ${phone} were found`})
                         }
                     }else{
                         res.status(401);
-                        res.send("Unauthorised user")
+                        res.send({"error":"Unauthorised user"})
                     }
                   });
             default:
