@@ -5,7 +5,7 @@ const auth = {
     phone: cookie.get("phone"),
     role: cookie.get("role"),
     redirect: (url)=>{
-        const cookiesPresent =  cookie.get("name") && cookie.get("phone") && cookie.get("role")
+        const cookiesPresent =  cookie.get("phone") 
         if (url){
             if(cookiesPresent){
                 window.open(url,"_self")

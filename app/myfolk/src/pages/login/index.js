@@ -1,15 +1,19 @@
 import './index.css';
 import {Spinner, SpinnerCtl} from '../../components/spinner';
-import {useState, useRef} from 'react'
+import {useState, useRef, useEffect} from 'react'
 import {Toast, ToastCtl} from '../../components/toast';
 import API from '../../api';
+import cookie from '../../cookie';
+import auth from '../../auth';
 const md5 = require("md5")
+
+var spinner = new SpinnerCtl()
+var toast = new ToastCtl()
 
 function Login() {
 
+  useEffect(()=>{auth.redirect("/home")},[])
   var [submitState, setSubmitState] = useState(false)
-  var spinner = new SpinnerCtl()
-  var toast = new ToastCtl()
   const loginPhone = useRef(null)
   const loginPass = useRef(null)
 
@@ -25,7 +29,10 @@ function Login() {
       spinner.hide()
       setSubmitState(false)
       if(res.status==200){
-        // TODO
+        for(var key in res.body){
+          cookie.set(key, res.body[key])
+        }
+        window.open("/home","_self")
       }else{
         toast.show(res.error)
       }
