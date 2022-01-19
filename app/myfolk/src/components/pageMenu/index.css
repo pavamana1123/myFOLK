@@ -1,0 +1,29 @@
+.pageMenu {
+    position: fixed;
+    z-index: 100;
+
+    background-color: var(--secondaryBg);
+    color: white;
+    width: 50vw;
+
+    right: 0%;
+
+    transform-origin: 100% 0%;
+
+    box-shadow: -3px 3px 5px #00000055;
+    margin: 3px 5px 0 0;
+
+    transition: transform 0.3s ease-in;
+}
+
+.pageMenuItem{
+    padding: 3vw;
+}
+
+.pageMenu#show {
+    transform: scale(1);
+}
+
+.pageMenu#hide {
+    transform: scale(0);
+}
