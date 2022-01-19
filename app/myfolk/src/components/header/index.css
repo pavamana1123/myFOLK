@@ -1,13 +1,13 @@
 .header_logo {
-    max-height:60%;
-    vertical-align: middle;
+    width:12vw;
 }
 
 .app_header {
-    grid-area: header;
-    height: 8vh;
+    display: grid;
+    height: 6vh;
+    width: 100%;
+    background-color: var(--secondaryBg);
 
-    display: flex;
     justify-content: center;
     align-items: center;
 }
