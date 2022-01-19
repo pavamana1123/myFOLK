@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 :root {
   --bg: #121b22;
   --secondaryBg: #1f2c34;
@@ -6,7 +8,7 @@
 }
 
 body {
-  background-color: (--bg);
+  background-color: (--bg);  
 }
 
 input {
@@ -36,6 +38,11 @@ input:focus {
   border-color: var(--green)
 }
 
+i {
+  color: white;
+  font-size: 5vw;
+}
+
 .App {
   display: grid;
   grid-template-areas:
@@ -46,3 +53,4 @@ input:focus {
 .app_header {
   background-color: var(--bg);
 }
+

@@ -3,11 +3,19 @@
 }
 
 .app_header {
-    display: grid;
+    display: flex;
     height: 6vh;
     width: 100%;
     background-color: var(--secondaryBg);
-
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+}
+
+#menuButton {
+    padding: 0% 3% 0% 0%;
+    font-size: 4vw;
+}
+
+#slideMenuButton {
+    padding: 0% 0% 0% 3%;
 }
