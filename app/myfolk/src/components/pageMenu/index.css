@@ -1,22 +1,24 @@
 .pageMenu {
     position: fixed;
-    z-index: 100;
-
-    background-color: var(--secondaryBg);
     color: white;
     width: 50vw;
-
-    right: 0%;
-
     transform-origin: 100% 0%;
-
     box-shadow: -3px 3px 5px #00000055;
-    margin: 3px 5px 0 0;
-
-    transition: transform 0.3s ease-in;
+    transition: transform 0.2s ease-in;
+    transform-origin: 200% 0%;
 }
 
-.pageMenuItem{
+.pageMenuList {
+    position: fixed;
+    z-index: 100;
+    background-color: var(--secondaryBg);
+    width: 100%;
+    right: -50vw;
+    margin: 3px 5px 0 0;
+    transform-origin: 200% 0%;
+}
+
+.pageMenuItem {
     padding: 3vw;
 }
 
@@ -26,4 +28,13 @@
 
 .pageMenu#hide {
     transform: scale(0);
+}
+
+.glass {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 99;
 }

@@ -1,11 +1,12 @@
 import './index.css';
 
-function Header() {
+function Header(props) {
+  var {onPageMenuClick} = props
   return (
     <div className="app_header">
-        <i class="bi bi-list" id="slideMenuButton"></i>
+        <i className="bi bi-list" id="slideMenuButton"></i>
         <img src="logo.png" className="header_logo"/>
-        <i class="bi bi-three-dots-vertical" id="menuButton"></i>
+        <i className="bi bi-three-dots-vertical" id="menuButton" onClick={onPageMenuClick}></i>
     </div>
   );
 }
