@@ -47,7 +47,7 @@ function Login() {
           <form id='login-form'>
               <input ref={loginPhone} type="tel" placeholder='Phone' pattern="[0-9]{10}"></input>
               <input ref={loginPass} type='password' placeholder='Password'></input>
-              <button disabled={submitState} onClick={onLogin}>Login</button>
+              <button className='clickable' disabled={submitState} onClick={onLogin}>Login</button>
               <div className='login-spinner'><Spinner show={submitState} size={25} ctl={spinner}/></div>
           </form>
     </div>

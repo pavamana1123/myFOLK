@@ -37,22 +37,7 @@ function PageMenu(props) {
       <div className='pageMenu' id={show?'show':'hide'}>
           {
             list.map((l)=>{
-              return <div className='pageMenuItem clickable' onClick={
-                (event)=>{
-                  const clickable = event.currentTarget
-                  const circle = document.createElement("span")
-                  const diameter = Math.max(clickable.clientWidth, clickable.clientHeight)
-                  const radius = diameter / 2
-
-                  circle.style.width = circle.style.height = `${diameter}px`
-
-                  circle.style.left = `${(event.clientX-clickable.getBoundingClientRect().x-radius)}px`
-                  circle.style.top = `${(event.clientY-clickable.getBoundingClientRect().y-radius)}px`
-
-                  circle.classList.add("ripple")
-                  clickable.appendChild(circle);
-                }
-              }>{l}</div>
+              return <div className='pageMenuItem clickable'>{l}</div>
             })
           }
       </div>
