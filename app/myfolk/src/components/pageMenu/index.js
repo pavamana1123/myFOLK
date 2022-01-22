@@ -32,17 +32,20 @@ function PageMenu(props) {
   },[])
 
   return (
-    <div className="pageMenu" id={show?'show':'hide'}>
-      <div className='pageMenuList'>
+    <div>
+      
+      <div className='pageMenu' id={show?'show':'hide'}>
           {
             list.map((l)=>{
               return <div className='pageMenuItem'>{l}</div>
             })
           }
       </div>
+
       {show?<div className='glass' onClick={()=>{
-        console.log('here')
-        setShow.bind(self)(false)}}/>:null}
+        setShow.bind(self)(false)}}/>:null
+      }
+
     </div>
   );
 }

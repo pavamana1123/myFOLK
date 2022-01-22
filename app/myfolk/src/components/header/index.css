@@ -3,7 +3,7 @@
 }
 
 .app_header {
-    position: fixed;
+    position: relative;
     display: flex;
     height: 6vh;
     width: 100%;
