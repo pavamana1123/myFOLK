@@ -27,15 +27,6 @@ function App() {
     for (let i = 0; i < clickables.length; i++) {
       clickables[i].addEventListener('click', addRipple)
     }
-
-    // make squares
-    const squares = document.getElementsByClassName('square')
-    for (let i = 0; i < squares.length; i++) {
-      const side = Math.max(squares[i].getBoundingClientRect().width, squares[i].getBoundingClientRect().height)
-      squares[i].style.width = `${side}px`
-      squares[i].style.height = `${side}px`
-      // squares[i].style.display = "grid"
-    }
   })
 
   return (
