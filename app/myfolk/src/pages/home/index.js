@@ -9,7 +9,10 @@ function Home() {
 
   return (
     <div>
-      <Header onPageMenuClick={()=>{pageMenu.show(true)}}/>
+      <Header onPageMenuClick={(event)=>{
+        pageMenu.position(event)
+        pageMenu.show()
+      }}/>
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
     </div>
   );
