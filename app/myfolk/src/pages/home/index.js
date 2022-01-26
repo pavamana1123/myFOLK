@@ -9,8 +9,8 @@ function Home() {
 
   return (
     <div>
-      <Header onPageMenuClick={(event)=>{
-        pageMenu.position(event)
+      <Header onPageMenuClick={()=>{
+        pageMenu.position('.5vw','6.5vh')
         pageMenu.show()
       }}/>
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>

@@ -34,21 +34,15 @@ function PageMenu(props) {
     ctl.setHideFunc(()=>{
       setShow.bind(self)(false)
     })
-    ctl.setPositionFunc((event)=>{
-      const rect = event.target.getBoundingClientRect()
-      const top = rect.y + rect.height
-      const right = window.innerWidth - (rect.x + rect.width)
-      setPosition.bind(self)({
-        top: `${top}px`,
-        right: `${right}px`,
-      })
+    ctl.setPositionFunc((right,top)=>{
+      setPosition.bind(self)({right, top})
     })
   },[])
 
   return (
     <div>
       
-      <div className='pageMenu' id={show?'show':'hide'} style={position}>
+      <div className='pageMenu' id={show?'show':'hide'} style={position||{}}>
           {
             list.map((l)=>{
               return <div className='pageMenuItem clickable'>{l}</div>
