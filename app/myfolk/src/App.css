@@ -27,6 +27,7 @@ button {
   cursor: pointer;
   font-size: larger;
   padding: 2%;
+  height: fit-content;
   transition: background-color 0.5s;
 }
 
