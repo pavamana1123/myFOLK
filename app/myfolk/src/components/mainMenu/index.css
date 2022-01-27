@@ -1,0 +1,25 @@
+.mainMenu {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--secondaryBg);
+    transition: left .3s ease-in-out, opacity .3s ease-in-out;
+    box-shadow: #0005 2px 2px 10px;
+}
+
+.mainMenuItem {
+    color: white;
+    padding: 3vw;
+}
+
+.mainMenu#show {
+    left: 0px
+}
+
+.mainMenu#hide {
+    left: -80vw;
+}
+
+
