@@ -1,0 +1,7 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/iskconmy/public_html/folk/
+    - export BUILDPATH=/home/iskconmy/public_html/folk/app/myfolk
+    - cd $BUILDPATH
+    - npm run build
