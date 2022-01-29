@@ -22,4 +22,28 @@
     left: -80vw;
 }
 
+.mainMenuProfile {
+    color: white;
+    display: grid;
+    justify-items: center;
+}
+
+.mainMenuProfileAvatar {
+    display: grid;
+    background: cadetblue;
+    font-size: xxx-large;
+    font-weight: 400;
+    border-radius: 50%;
+    width: 10vw;
+    height: 10vw;
+    align-content: center;
+    justify-content: center;
+    margin: 3vw;
+}
+
+.mainMenuProfileName {
+    font-size: larger;
+    font-weight: 400;
+}
+
 

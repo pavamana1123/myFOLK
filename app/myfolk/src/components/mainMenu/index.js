@@ -1,5 +1,6 @@
 import './index.css';
 import {useEffect, useState} from 'react'
+import cookie from '../../cookie';
 
 class MainMenuCtl {
 
@@ -35,6 +36,10 @@ function MainMenu(props) {
     <div>
       
       <div className='mainMenu' id={show?'show':'hide'}>
+          <div className='mainMenuProfile'>
+            <div className='mainMenuProfileAvatar'>{cookie.get('name').charAt(0).toUpperCase()}</div>
+            <div className='mainMenuProfileName'>{cookie.get('name')}</div>
+          </div>
           {
             list.map((l)=>{
               return <div className='mainMenuItem clickable'>{l}</div>
