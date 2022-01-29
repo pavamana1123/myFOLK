@@ -72,13 +72,41 @@ LOCK TABLES `categories` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `contacts`
+-- Table structure for table `participation`
 --
 
-DROP TABLE IF EXISTS `contacts`;
+DROP TABLE IF EXISTS `participation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `contacts` (
+CREATE TABLE `participation` (
+  `phone` varchar(20) DEFAULT NULL,
+  `eventId` varchar(45) DEFAULT NULL,
+  `caller` varchar(45) DEFAULT NULL,
+  `response` varchar(45) DEFAULT NULL,
+  `remarks` varchar(45) DEFAULT NULL,
+  `attendance` tinyint DEFAULT NULL,
+  KEY `participant_idx` (`phone`),
+  CONSTRAINT `participant` FOREIGN KEY (`phone`) REFERENCES `people` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `participation`
+--
+
+LOCK TABLES `participation` WRITE;
+/*!40000 ALTER TABLE `participation` DISABLE KEYS */;
+/*!40000 ALTER TABLE `participation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `people`
+--
+
+DROP TABLE IF EXISTS `people`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `people` (
   `phone` varchar(15) NOT NULL,
   `isWAPhone` tinyint DEFAULT NULL,
   `name` varchar(45) NOT NULL,
@@ -109,48 +137,20 @@ CREATE TABLE `contacts` (
   KEY `source_idx` (`source`),
   KEY `category_idx` (`category`),
   KEY `role_idx` (`role`),
-  CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `categories` (`category`),
-  CONSTRAINT `role` FOREIGN KEY (`role`) REFERENCES `roles` (`role`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `source` FOREIGN KEY (`source`) REFERENCES `sources` (`source`)
+  CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `categories` (`category`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `roleId` FOREIGN KEY (`role`) REFERENCES `roles` (`roleId`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `source` FOREIGN KEY (`source`) REFERENCES `sources` (`source`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contacts`
+-- Dumping data for table `people`
 --
 
-LOCK TABLES `contacts` WRITE;
-/*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES ('788988545',NULL,'Test name',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `participation`
---
-
-DROP TABLE IF EXISTS `participation`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `participation` (
-  `phone` varchar(20) DEFAULT NULL,
-  `eventId` varchar(45) DEFAULT NULL,
-  `caller` varchar(45) DEFAULT NULL,
-  `response` varchar(45) DEFAULT NULL,
-  `remarks` varchar(45) DEFAULT NULL,
-  `attendance` tinyint DEFAULT NULL,
-  KEY `caller_idx` (`phone`),
-  CONSTRAINT `caller` FOREIGN KEY (`phone`) REFERENCES `contacts` (`phone`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf32;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `participation`
---
-
-LOCK TABLES `participation` WRITE;
-/*!40000 ALTER TABLE `participation` DISABLE KEYS */;
-/*!40000 ALTER TABLE `participation` ENABLE KEYS */;
+LOCK TABLES `people` WRITE;
+/*!40000 ALTER TABLE `people` DISABLE KEYS */;
+INSERT INTO `people` VALUES ('1',NULL,'Pavanprana',NULL,NULL,NULL,NULL,'admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'c4ca4238a0b923820dcc509a6f75849b',NULL,NULL);
+/*!40000 ALTER TABLE `people` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -218,7 +218,7 @@ CREATE TABLE `registrations` (
   `phone` varchar(45) DEFAULT NULL,
   KEY `program_idx` (`program`),
   KEY `phone_idx` (`phone`),
-  CONSTRAINT `phone` FOREIGN KEY (`phone`) REFERENCES `contacts` (`phone`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `phone` FOREIGN KEY (`phone`) REFERENCES `people` (`phone`) ON DELETE SET NULL ON UPDATE CASCADE,
   CONSTRAINT `programid` FOREIGN KEY (`program`) REFERENCES `programs` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -240,8 +240,10 @@ DROP TABLE IF EXISTS `roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `roles` (
-  `role` varchar(20) NOT NULL,
-  PRIMARY KEY (`role`)
+  `roleId` varchar(10) NOT NULL,
+  `roleName` varchar(20) NOT NULL,
+  `roleLevel` int NOT NULL,
+  PRIMARY KEY (`roleId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -251,7 +253,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES ('Pavanaprana Dasa');
+INSERT INTO `roles` VALUES ('ac','Acountant',4),('admin','Admin',0),('core','Core Member',2),('cv','Calling Volunteer',3),('default','Default',5),('exec','FOLK Executive',1);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,4 +288,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-28 12:44:18
+-- Dump completed on 2022-01-29 15:25:40
