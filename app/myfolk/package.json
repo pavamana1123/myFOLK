@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && rmdir /Q /S ..\\..\\static && move /y build\\* ..\\.. && move /y build\\static ..\\..",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
