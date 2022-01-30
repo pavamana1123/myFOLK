@@ -1,0 +1,20 @@
+.titlebar_title {
+    font-size: large;
+    color: white;
+    margin-left: 2vw;
+    font-weight: bolder;
+}
+
+.titlebar{
+    position: relative;
+    display: flex;
+    height: 6vh;
+    width: 100%;
+    background-color: var(--secondaryBg);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titlebar_children {
+    display: flex;
+}
