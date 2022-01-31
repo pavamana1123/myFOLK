@@ -1,6 +1,7 @@
 import './index.css';
 import Header from "../../components/header"
 import TitleBar from "../../components/titleBar"
+import {SearchBox} from "../../components/searchBox"
 import {PageMenu, PageMenuCtl} from '../../components/pageMenu';
 import { useEffect, useRef } from 'react';
 
@@ -21,9 +22,7 @@ function Attendence() {
       }}/>
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
       <TitleBar title='Attendence'>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+        <SearchBox/>
       </TitleBar>
 
       <div className='attendenceSearchHolder'>

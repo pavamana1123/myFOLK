@@ -1,0 +1,15 @@
+.searchBox {
+  position: relative;
+  transform-origin: right;
+  display: flex;
+}
+
+.searchBox>.searchField {
+  width: 100%;
+}
+
+.searchBox>.searchIcons {
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+}
