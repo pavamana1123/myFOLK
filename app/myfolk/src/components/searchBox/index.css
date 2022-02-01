@@ -2,6 +2,8 @@
   position: relative;
   transform-origin: right;
   display: flex;
+  width: 60vw;
+  transition: width 0.2s;
 }
 
 .searchBox>.searchField {
@@ -11,5 +13,37 @@
 .searchBox>.searchIcons {
   position: absolute;
   right: 0;
-  transform: translateY(-50%);
+  transform-origin: center;
+  font-size: 130%;
+  transition: transform 0.2s;
+}
+
+.closeButton {
+  color: #ccc;
+}
+
+.searchButton#show {
+  transform: scale(100%);
+}
+
+.searchButton#hide {
+  transform: scale(0%);
+}
+
+.closeButton#show {
+  transform: scale(100%) rotate(180deg);
+}
+
+.closeButton#hide {
+  transform: scale(0%) rotate(0deg);
+}
+
+.searchBox#show {
+  width: 60vw;
+  color: white;
+}
+
+.searchBox#hide {
+  width: .1vw;
+  color: transparent;
 }

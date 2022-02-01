@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './index.css';
 
 class SearchBoxCtl {
@@ -16,17 +16,32 @@ class SearchBoxCtl {
 
 function SearchBox(props) {
 
-  var [show, setShow] = useState(props.show)
+  var [show, setShow] = useState(false)
+  var searchField = useRef()
   const self = this
+
   useEffect(()=>{
-  },[])
+    if(show){
+      searchField.current.focus()
+    }
+  },[show])
+
+  const onSearch = ()=>{
+    setShow(true)
+  }
+
+  const onClose = ()=>{
+    setShow(false)
+    searchField.current.blur()
+    searchField.current.value = ''
+  }
 
   return (
     <div>
-      <div className='searchBox'>
-        <input className='searchField'></input>
-        <i className="bi bi-search searchIcons" id="searchButton"></i>
-        <i className="bi bi-x searchIcons" id="closeButton"></i>
+      <div className='searchBox' id={show?"show":"hide"}>
+        <input className='searchField' ref={searchField}></input>
+        <i className="bi bi-search searchIcons searchButton" id={show?"hide":"show"} onClick={onSearch}></i>
+        <i className="bi bi-x searchIcons closeButton" id={show?"show":"hide"} onClick={onClose}></i>
       </div>
     </div>
   );

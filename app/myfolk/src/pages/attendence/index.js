@@ -10,9 +10,6 @@ var pageMenu = new PageMenuCtl()
 function Attendence() {
   var search = useRef()
 
-  useEffect(()=>{
-    search.current.focus()
-  },[])
 
   return (
     <div>
@@ -23,11 +20,10 @@ function Attendence() {
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
       <TitleBar title='Attendence'>
         <SearchBox/>
+        <i className='bi bi-plus'></i>
+        <i className='bi bi-arrow-clockwise'></i>
       </TitleBar>
 
-      <div className='attendenceSearchHolder'>
-        <input className='attendenceSearchInput' ref={search} placeholder='Enter name or phone to search'/>
-      </div>
 
     </div>
   );
