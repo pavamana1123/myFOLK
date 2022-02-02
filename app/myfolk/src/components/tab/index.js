@@ -16,9 +16,10 @@ class TabCtl {
 }
 
 function Tab(props) {
-  var [activeTab, setActiveTab] = useState(props.activeTab)
+  var [activeTab, setActiveTab] = useState(0)
   var self=this
   const {tabs} = props
+  var ActiveTabComponent = tabs[activeTab].component
 
   return (
     <div className='tab'>
@@ -38,6 +39,10 @@ function Tab(props) {
           width:`${100/tabs.length}vw`,
           left: `${activeTab*(100/tabs.length)}%`
           }}></div>
+      </div>
+
+      <div className='tabChildren'>
+        <ActiveTabComponent/>
       </div>
 
     </div>

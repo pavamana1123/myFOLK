@@ -11,6 +11,13 @@ var pageMenu = new PageMenuCtl()
 function Attendence() {
   var search = useRef()
 
+  const a = ()=>{
+    return <div>{'a'}</div>
+  }
+
+  const b = ()=>{
+    return <div>{'b'}</div>
+  }
 
   return (
     <div>
@@ -26,14 +33,10 @@ function Attendence() {
       <Tab tabs={[
         {
           title:'Not Attended',
-          component: ()=>{
-            return 1
-          }          
+          component: a 
         },{
           title:'Attended',
-          component: ()=>{
-            return 2
-          }          
+          component: b 
         }
       ]}/>
 
