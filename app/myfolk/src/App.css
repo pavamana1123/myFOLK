@@ -9,6 +9,7 @@
 
 body {
   background-color: (--bg);  
+  color: white;
 }
 
 input {
@@ -52,10 +53,6 @@ i {
   'body'
 }
 
-.app_header {
-  background-color: var(--bg);
-}
-
 .glass {
   position: fixed;
   width: 100vw;
@@ -69,6 +66,7 @@ i {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  user-select: none;
 }
 
 span.ripple {

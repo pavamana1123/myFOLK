@@ -21,8 +21,7 @@ function Attendence() {
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
       <TitleBar title='Attendence'>
         <SearchBox/>
-        <i className='bi bi-plus'></i>
-        <i className='bi bi-arrow-clockwise'></i>
+        <i className='bi bi-plus' style={{transform:'scale(1.5)'}}></i>
       </TitleBar>
       <Tab tabs={[
         {

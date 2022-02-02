@@ -5,16 +5,20 @@
     font-weight: bold;
 }
 
-.titlebar{
+.titlebar {
     position: relative;
     display: flex;
-    height: 6vh;
+    height: 12vw;
     width: 100%;
     background-color: var(--secondaryBg);
     align-items: center;
     justify-content: space-between;
 }
 
-.titlebar_children {
+.titlebarChildren {
     display: flex;
+}
+
+.titlebarChildren > *{
+    margin: 0 2vw 0 2vw;
 }

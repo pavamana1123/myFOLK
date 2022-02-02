@@ -39,9 +39,11 @@ function SearchBox(props) {
   return (
     <div>
       <div className='searchBox' id={show?"show":"hide"}>
-        <input className='searchField' ref={searchField}></input>
-        <i className="bi bi-search searchIcons searchButton" id={show?"hide":"show"} onClick={onSearch}></i>
-        <i className="bi bi-x searchIcons closeButton" id={show?"show":"hide"} onClick={onClose}></i>
+        <input className='searchField' ref={searchField} id={show?"show":"hide"}></input>
+        <div className='searchIcons'>
+          <i className="bi bi-search searchButton" id={show?"hide":"show"} onClick={onSearch}></i>
+          <i className="bi bi-x closeButton" id={show?"show":"hide"} onClick={onClose}></i>
+        </div>
       </div>
     </div>
   );

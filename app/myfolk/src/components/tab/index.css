@@ -3,10 +3,9 @@
     width: 100vw;
 }
 
-.tab>.tabHeader {
+.tabHeaderItems {
     display: flex;
     justify-content: space-around;
-    background: var(--secondaryBg);
 }
 
 .tabHeaderItem {
@@ -18,7 +17,13 @@
 .tabHeaderItem:hover {
 }
 
-.tab>.underline {
-    height: .4vh;
+.tabUnderline {
+    position: relative;
+    height: .4vw;
     background: var(--green);
+    transition: left .1s ease-in-out;
+}
+
+.tabHeader {
+    background-color: var(--secondaryBg);
 }

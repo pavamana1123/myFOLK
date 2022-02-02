@@ -1,4 +1,6 @@
 import './index.css';
+import { useState, useEffect, useRef } from 'react';
+
 
 class TabCtl {
   constructor(){
@@ -14,20 +16,30 @@ class TabCtl {
 }
 
 function Tab(props) {
+  var [activeTab, setActiveTab] = useState(props.activeTab)
+  var self=this
   const {tabs} = props
 
   return (
     <div className='tab'>
-      <div className='tabHeader app_header'>
-        {
-          tabs.map((tab, i)=>{
-            return (
-              <div className='tabHeaderItem' key={i}>{tab.title}</div>
-            )
-          })
-        }
+      <div className='tabHeader'>
+        <div className='tabHeaderItems'>
+          {
+            tabs.map((tab, i)=>{
+              return (
+                <div className='tabHeaderItem clickable' key={i} onClick={()=>{
+                  setActiveTab.bind(self)(i)
+                }}>{tab.title}</div>
+              )
+            })
+          }
+        </div>
+        <div className='tabUnderline' style={{
+          width:`${100/tabs.length}vw`,
+          left: `${activeTab*(100/tabs.length)}%`
+          }}></div>
       </div>
-      <div className='underline' style={{width:`${100/tabs.length}vw`}}></div>
+
     </div>
   )
 }

@@ -5,7 +5,7 @@ function TitleBar(props) {
   return (
     <div className="titlebar">
       <div className='titlebar_title'>{title}</div>
-      <div className='titlebar_children'>
+      <div className='titlebarChildren'>
         {children}
       </div>
     </div>

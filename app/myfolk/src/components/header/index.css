@@ -2,10 +2,10 @@
     width:12vw;
 }
 
-.app_header {
+.appHeader {
     position: relative;
     display: flex;
-    height: 6vh;
+    height: 10vw;
     width: 100%;
     background-color: var(--secondaryBg);
     align-items: center;

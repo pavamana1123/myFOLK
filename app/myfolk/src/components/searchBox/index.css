@@ -3,19 +3,27 @@
   transform-origin: right;
   display: flex;
   width: 60vw;
-  transition: width 0.2s;
+  transition: width 0.2s, opacity .2s;
 }
 
-.searchBox>.searchField {
+.searchField {
   width: 100%;
+  transition: opacity .2s;
 }
 
-.searchBox>.searchIcons {
+.searchIcons {
   position: absolute;
   right: 0;
-  transform-origin: center;
-  font-size: 130%;
-  transition: transform 0.2s;
+  display: grid;
+  height: 7vw;
+  Width: 7vw;
+  justify-content: center;
+}
+
+.searchIcons > * {
+  grid-column-start: 1;
+  grid-row-start: 1;
+  transition: transform .2s;
 }
 
 .closeButton {
@@ -39,11 +47,19 @@
 }
 
 .searchBox#show {
-  width: 60vw;
+  width: 50vw;
   color: white;
 }
 
 .searchBox#hide {
-  width: .1vw;
+  width: 0vw;
   color: transparent;
+}
+
+.searchField#show {
+  opacity: 1;
+}
+
+.searchField#hide {
+  opacity: 0; 
 }
