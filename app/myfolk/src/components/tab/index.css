@@ -1,11 +1,13 @@
 .tab {
     color: white;
     width: 100vw;
+    font-size: 3.7vw;
 }
 
 .tabHeaderItems {
     display: flex;
     justify-content: space-around;
+    height: 7vw;
 }
 
 .tabHeaderItem {
@@ -14,8 +16,6 @@
     cursor: pointer;
 }
 
-.tabHeaderItem:hover {
-}
 
 .tabUnderline {
     position: relative;

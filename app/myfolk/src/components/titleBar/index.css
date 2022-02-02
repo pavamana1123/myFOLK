@@ -1,5 +1,5 @@
 .titlebar_title {
-    font-size: large;
+    font-size: 4vw;
     color: white;
     margin-left: 2vw;
     font-weight: bold;
@@ -8,7 +8,7 @@
 .titlebar {
     position: relative;
     display: flex;
-    height: 12vw;
+    height: 10vw;
     width: 100%;
     background-color: var(--secondaryBg);
     align-items: center;
@@ -21,4 +21,6 @@
 
 .titlebarChildren > *{
     margin: 0 2vw 0 2vw;
+    display: flex;
+    align-items: center;
 }

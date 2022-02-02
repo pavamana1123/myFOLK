@@ -17,7 +17,7 @@ input {
   border-width: 0 0 0.1rem;
   background-color: rgba(0, 0, 0, 0);
   color: white;
-  font-size: larger;
+  font-size: 4vw;
 }
 
 button {
@@ -26,7 +26,7 @@ button {
   outline: none;
   border: none;
   cursor: pointer;
-  font-size: larger;
+  font-size: 5vw;
   padding: 2%;
   height: fit-content;
   transition: background-color 0.5s;
