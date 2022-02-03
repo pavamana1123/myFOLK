@@ -44,6 +44,7 @@ i {
   color: white;
   font-size: 5vw;
   cursor: pointer;
+  user-select: none;
 }
 
 .App {

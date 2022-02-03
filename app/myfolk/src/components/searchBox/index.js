@@ -38,8 +38,8 @@ function SearchBox(props) {
 
   return (
     <div>
-      <input className='searchField'/>
-      {show?<i className='bi bi-x'/>:<i className='bi bi-search' style={{fontSize:'4.5vw'}}/>}
+      <input className='searchField' ref={searchField} id={show?'show':'hide'}/>
+      {show?<i className='searchIcon bi bi-x' onClick={onClose}/>:<i className='searchIcon bi bi-search' onClick={onSearch}/>}
     </div>
   );
 }

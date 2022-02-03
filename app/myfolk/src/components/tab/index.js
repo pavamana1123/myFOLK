@@ -24,11 +24,11 @@ function Tab(props) {
   return (
     <div className='tab'>
       <div className='tabHeader'>
-        <div className='tabHeaderItems'>
+        <div className='tabHeaderItems '>
           {
             tabs.map((tab, i)=>{
               return (
-                <div className='tabHeaderItem clickable' key={i} onClick={()=>{
+                <div className='tabHeaderItem' key={i} onClick={()=>{
                   setActiveTab.bind(self)(i)
                 }}>{tab.title}</div>
               )

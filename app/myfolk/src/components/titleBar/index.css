@@ -20,7 +20,7 @@
 }
 
 .titlebarChildren > *{
-    margin: 0 2vw 0 2vw;
+    margin-right: 2vw;
     display: flex;
     align-items: center;
 }
