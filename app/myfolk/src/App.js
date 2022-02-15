@@ -1,7 +1,7 @@
 import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
-import Attendence from './pages/attendence';
+import People from './pages/people';
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import { useEffect } from 'react';
 
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/attendence" element={<Attendence />}></Route>
+          <Route path="/People" element={<People />}></Route>
         </Routes>
     </Router>
     </div>

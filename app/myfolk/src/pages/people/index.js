@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react';
 
 var pageMenu = new PageMenuCtl()
 
-function Attendence() {
+function People() {
   var search = useRef()
 
   const a = ()=>{
@@ -26,24 +26,12 @@ function Attendence() {
         pageMenu.show()
       }}/> 
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
-      <TitleBar title='Attendence'>
+      <TitleBar title='People'>
         <SearchBox/>
-        <i className='bi bi-arrow-clockwise'></i>
         <i className='bi bi-plus' style={{transform:'scale(1.5)'}}></i>
       </TitleBar>
-      <Tab tabs={[
-        {
-          title:'Not Attended',
-          component: a 
-        },{
-          title:'Attended',
-          component: b 
-        }
-      ]}/>
-
-
     </div>
   );
 }
 
-export default Attendence;
+export default People;
