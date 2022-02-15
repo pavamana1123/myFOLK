@@ -46,6 +46,13 @@ class API {
                         }
                   });
 
+
+                case "/people":
+                this.db.query('SELECT * from people order by name', function (error, result) {
+                    if (error) throw error;
+                    res.send(result)
+                });
+
             default:
         }
     }

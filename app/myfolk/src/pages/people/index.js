@@ -4,20 +4,20 @@ import {Tab} from "../../components/tab"
 import TitleBar from "../../components/titleBar"
 import {SearchBox} from "../../components/searchBox"
 import {PageMenu, PageMenuCtl} from '../../components/pageMenu';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import API from '../../api';
 
 var pageMenu = new PageMenuCtl()
 
 function People() {
   var search = useRef()
+  var [people, setPeople] = useState([])
 
-  const a = ()=>{
-    return <div>{'a'}</div>
-  }
-
-  const b = ()=>{
-    return <div>{'b'}</div>
-  }
+  useEffect(()=>{
+    new API().call("/people").then((res)=>{
+        setPeople(res.body)
+    })
+  },[])
 
   return (
     <div>
@@ -30,6 +30,13 @@ function People() {
         <SearchBox/>
         <i className='bi bi-plus' style={{transform:'scale(1.5)'}}></i>
       </TitleBar>
+      {
+        people.map((p)=>{
+          return (
+            <div>{p.name}</div>
+          )
+        })
+      }
     </div>
   );
 }
