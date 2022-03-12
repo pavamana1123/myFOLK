@@ -4,6 +4,7 @@ import Home from './pages/home';
 import People from './pages/people';
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import { useEffect } from 'react';
+import BMW from './pages/bmw';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/People" element={<People />}></Route>
+          <Route path="/bmw" element={<BMW />}></Route>
         </Routes>
     </Router>
     </div>
