@@ -8,7 +8,15 @@ var pageMenu = new PageMenuCtl()
 function BMW() {
 
   const readRawData = ()=>{
-    navigator.clipboard.readText().then(rawData=>console.log(rawData.split("\t")[1].split("\"")[1]))
+    
+    var a = document.createElement("a")
+    a.href="https://wa.me/917483567366"
+    a.click()
+
+    alert(navigator.clipboard)
+
+    navigator.clipboard.readText().then(rawData=>console.log(rawData.split("\t")))
+
   }
 
   return (
@@ -18,6 +26,7 @@ function BMW() {
         pageMenu.show()
       }}/>
       <button className='clickable import' onClick={readRawData}>Import from clipboard</button>
+      <a href='https://wa.me/917483567366'>Click</a>
     </div>
   );
 }
