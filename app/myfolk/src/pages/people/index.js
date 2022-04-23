@@ -4,20 +4,33 @@ import {Tab} from "../../components/tab"
 import TitleBar from "../../components/titleBar"
 import {SearchBox} from "../../components/searchBox"
 import {PageMenu, PageMenuCtl} from '../../components/pageMenu';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import API from '../../api';
 
 var pageMenu = new PageMenuCtl()
 
 function People() {
-  var search = useRef()
   var [people, setPeople] = useState([])
-
+  var [peopleList, setPeopleList] = useState([])
+  
   useEffect(()=>{
     new API().call("/people").then((res)=>{
         setPeople(res.body)
+        setPeopleList(res.body)
     })
   },[])
+
+  var [searchKey, setSearchKey] = useState('')
+  useEffect(()=>{
+    console.log("search changed", searchKey, people)
+    setPeopleList(searchKey?people.filter((p)=>{
+      return p.name.toLowerCase().includes(searchKey.toLowerCase())
+    }):people)
+  },[searchKey])
+
+  const onSearch = (k)=>{
+    setSearchKey(k)
+  }
 
   return (
     <div>
@@ -27,13 +40,13 @@ function People() {
       }}/> 
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
       <TitleBar title='People'>
-        <SearchBox/>
+        <SearchBox onSearch={onSearch}/>
         <i className='bi bi-plus' style={{transform:'scale(1.5)'}}></i>
       </TitleBar>
       {
-        people.map((p)=>{
+        peopleList.map((p)=>{
           return (
-            <div>{p.name}</div>
+            <div className='contact'>{p.name}</div>
           )
         })
       }

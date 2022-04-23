@@ -20,13 +20,15 @@ function SearchBox(props) {
   var searchField = useRef()
   const self = this
 
+  var {onSearch} = props
+
   useEffect(()=>{
     if(show){
       searchField.current.focus()
     }
   },[show])
 
-  const onSearch = ()=>{
+  const onSearchClick = ()=>{
     setShow(true)
   }
 
@@ -34,12 +36,17 @@ function SearchBox(props) {
     setShow(false)
     searchField.current.blur()
     searchField.current.value = ''
+    onSearch('')
+  }
+
+  const onSearchChange = ()=>{
+    onSearch(searchField.current.value)
   }
 
   return (
     <div>
-      <input className='searchField' ref={searchField} id={show?'show':'hide'}/>
-      {show?<i className='searchIcon bi bi-x' onClick={onClose}/>:<i className='searchIcon bi bi-search' onClick={onSearch}/>}
+      <input className='searchField' ref={searchField} id={show?'show':'hide'} onChange={onSearchChange}/>
+      {show?<i className='searchIcon bi bi-x' onClick={onClose}/>:<i className='searchIcon bi bi-search' onClick={onSearchClick}/>}
     </div>
   );
 }
