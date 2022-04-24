@@ -5,8 +5,6 @@ class API {
 
     call(req, res) {
 
-        // console.log(req.body)
-        
         var {body} = req
 
         switch(req.get("endpoint")){
