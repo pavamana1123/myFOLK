@@ -2,6 +2,7 @@ import './App.css';
 import Login from './pages/login';
 import Home from './pages/home';
 import People from './pages/people';
+import Test from './pages/test';
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import { useEffect } from 'react';
 
@@ -36,7 +37,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/People" element={<People />}></Route>
+          <Route path="/people" element={<People />}></Route>
+          <Route path="/test" element={<Test />}></Route>
         </Routes>
     </Router>
     </div>
