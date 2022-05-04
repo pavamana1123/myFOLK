@@ -5,6 +5,7 @@ import People from './pages/people';
 import Test from './pages/test';
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import { useEffect } from 'react';
+import NewContact from './pages/newContact';
 
 function App() {
 
@@ -38,10 +39,28 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/people" element={<People />}></Route>
+          <Route path="/new/contact" element={<NewContact />}></Route>
           <Route path="/test" element={<Test />}></Route>
         </Routes>
     </Router>
     </div>
+  );
+}
+
+String.prototype.toCamelCase = function() {
+  return this.toLowerCase()
+    .replace( /['"]/g, '' )
+    .replace( /\W+/g, ' ' )
+    .replace( / (.)/g, function($1) { return $1.toUpperCase(); })
+    .replace( / /g, '' );
+}
+
+String.prototype.toTitleCase = function() {
+  return this.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
   );
 }
 
