@@ -10,14 +10,15 @@ class InputCtl {
 
 function Input(props) {
 
-  var {id, type, label, placeholder, onBlur} = props
+  var {id, type, label, placeholder, onBlur, maxLength} = props
 
   return(
     <div>
       <div>{label}</div>
       <input
         id={id||label.toCamelCase()}
-        type={type}
+        type={type||"text"}
+        maxlength={maxLength}
         placeholder={placeholder}
         onBlur={onBlur}/>
     </div>

@@ -1,4 +1,5 @@
 import './App.css';
+import './strings.js'
 import Login from './pages/login';
 import Home from './pages/home';
 import People from './pages/people';
@@ -44,23 +45,6 @@ function App() {
         </Routes>
     </Router>
     </div>
-  );
-}
-
-String.prototype.toCamelCase = function() {
-  return this.toLowerCase()
-    .replace( /['"]/g, '' )
-    .replace( /\W+/g, ' ' )
-    .replace( / (.)/g, function($1) { return $1.toUpperCase(); })
-    .replace( / /g, '' );
-}
-
-String.prototype.toTitleCase = function() {
-  return this.replace(
-    /\w\S*/g,
-    function(txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    }
   );
 }
 

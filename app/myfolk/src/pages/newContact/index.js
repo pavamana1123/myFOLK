@@ -18,20 +18,10 @@ function NewContact() {
 
       <Form>
         <Input label="Name" onBlur={(e)=>{
-          var v = e.target.value
-          v = v.replace(/  +/g, ' ')
-          v = v.replaceAll('.', ' ')
-          var parts = v.split(" ")
-          if(parts.length!=v.replaceAll(" ","").length){
-            while(parts[0].length==1){
-              console.log(1,parts)
-              parts.push(parts.shift())
-              console.log(2,parts)
-            }
-          }
-          v=parts.join(" ")
-          v = v.toTitleCase()
-          e.target.value=v
+          e.target.value=e.target.value.standardizeName()
+        }}/>
+        <Input label="Phone" type="tel" maxLength={10} onBlur={(e)=>{
+          e.target.value=e.target.value.standardizeName()
         }}/>
       </Form>
 
