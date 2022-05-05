@@ -20,9 +20,9 @@ function NewContact() {
         <Input label="Name" onBlur={(e)=>{
           e.target.value=e.target.value.standardizeName()
         }}/>
-        <Input label="Phone" type="tel" maxLength={10} onBlur={(e)=>{
-          e.target.value=e.target.value.standardizeName()
-        }}/>
+        <Input label="Phone" type="tel" maxLength={10}/>
+        <button type="submit" maxLength={10} onClick={(e)=>{
+          e.preventDefault()}}>Save</button>
       </Form>
 
     </div>
