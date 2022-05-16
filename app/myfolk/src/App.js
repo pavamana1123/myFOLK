@@ -40,7 +40,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/people" element={<People />}></Route>
-          <Route path="/new/contact" element={<NewContact />}></Route>
+          <Route path="/contact/:filter" element={<NewContact ok={2}/>}></Route>
           <Route path="/test" element={<Test />}></Route>
         </Routes>
     </Router>
