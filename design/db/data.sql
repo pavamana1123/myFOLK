@@ -36,7 +36,9 @@ CREATE TABLE `calendar` (
   `venue` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`eventId`),
   KEY `program_idx` (`program`),
-  CONSTRAINT `program` FOREIGN KEY (`program`) REFERENCES `programs` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+  KEY `speaker_idx` (`speaker`),
+  CONSTRAINT `program` FOREIGN KEY (`program`) REFERENCES `programs` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `speaker` FOREIGN KEY (`speaker`) REFERENCES `preachers` (`initials`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -46,6 +48,7 @@ CREATE TABLE `calendar` (
 
 LOCK TABLES `calendar` WRITE;
 /*!40000 ALTER TABLE `calendar` DISABLE KEYS */;
+INSERT INTO `calendar` VALUES ('2021-09-26','FOLK2','20210926-FOLK2','Definition of God - 2 & VE-1',NULL,NULL,0,'SKKD','Sridham Hall'),('2021-09-26','SOS','20210926-SOS','Building Self-Confidance',NULL,NULL,0,'PVPD','AV Hall'),('2021-10-03','FWRETREAT2021','20211003-FWRETREAT2021','FOLK Weekend Retreat',NULL,NULL,0,NULL,NULL),('2021-10-10','FOLK2','20211010-FOLK2','What is Krishna Consciousness?',NULL,NULL,0,'SMRD','Sridham Hall'),('2021-10-10','SOS','20211010-SOS','Perfect Knowledge',NULL,NULL,0,'PVPD','AV Hall'),('2021-10-17','FOLK2','20211017-FOLK2','What is Krishna Consciousness? (Part 2)',NULL,NULL,0,'SMRD','Sridham Hall'),('2021-10-17','SOS','20211017-SOS','Habits for Happiness',NULL,NULL,0,'SKKD','AV Hall'),('2021-10-24','FOLK2','20211024-FOLK2','Vedic Literatures',NULL,NULL,0,'VSCD','Sridham Hall'),('2021-10-24','SOS','20211024-SOS','Handling Competition',NULL,NULL,0,'PVPD','AV Hall'),('2021-10-31','FOLK2','20211031-FOLK2','Common Session',NULL,NULL,0,'PKJD','Sridham Hall'),('2021-10-31','SOS','20211031-SOS','Diet For Happiness',NULL,NULL,0,'PKJD','AV Hall'),('2021-11-07','FOLK2','20211107-FOLK2','Vedic Literatures (Part 2)',NULL,NULL,0,'PVPD','Sridham Hall'),('2021-11-07','SOS','20211107-SOS','Principles of Freedom',NULL,NULL,0,'SKKD','AV Hall'),('2021-11-14','GODSUMB','20211114-GODSUMB','God\'s Umbrella',NULL,NULL,0,'PKJD','Sridham Hall'),('2021-11-21','FOLK2','20211121-FOLK2','Vedic Literatures (Contd.)',NULL,NULL,0,'PKJD','Sridham Hall'),('2021-11-21','SOS','20211121-SOS','The Law of Karma',NULL,NULL,0,'PKJD','AV Hall'),('2021-11-28','FOLK2','20211128-FOLK2','The Hare Krishna Maha-Mantra',NULL,NULL,0,'SMRD','Sridham Hall'),('2021-11-28','SOS','20211128-SOS','God - Imagination or reality?',NULL,NULL,0,'PVPD','AV Hall'),('2021-12-05','FOLK2','20211205-FOLK2','The Hare Krishna Maha-Mantra (contd.)',NULL,NULL,0,'SKKD','Sridham Hall'),('2021-12-05','SOS','20211205-SOS','Building Self-Confidance',NULL,NULL,0,'PVPD','AV Hall'),('2021-12-12','FOLK2','20211212-FOLK2','FAQ on the Hare Krishna Maha-mantra',NULL,NULL,0,'PVPD','TPH'),('2021-12-12','SOS','20211212-SOS','Perfect Knowledge',NULL,NULL,0,'SKKD','AV Hall'),('2021-12-19','FOLK2','20211219-FOLK2','FAQ on the Hare Krishna Maha-mantra (contd.)',NULL,NULL,0,'PVPD','Sridham Hall'),('2021-12-19','PURI2021','20211219-PURI2021','Puri Yatra',NULL,NULL,0,NULL,NULL),('2021-12-19','SOS','20211219-SOS','Building Habits Effectively',NULL,NULL,0,'SKKD','AV Hall'),('2021-12-31','SANKALP2022','20211231-SANKALP2022','Sankalp 2022',NULL,NULL,0,NULL,'Sridham Hall'),('2022-01-09','FOLK2','20220109-FOLK2','The Four Regulative Principles',NULL,NULL,0,'SKKD','Online'),('2022-01-09','SOS','20220109-SOS','Handling Competition',NULL,NULL,0,'PVPD','Online'),('2022-01-14','FOLK2','20220114-FOLK2','The Four Regulative Principles (contd.)',NULL,NULL,0,'SKKD','Sridham Hall'),('2022-01-14','SOS','20220114-SOS','Diet For Happiness',NULL,NULL,0,'PVPD','AV Hall'),('2022-01-21','FOLK2','20220121-FOLK2','Krishna & Devatas',NULL,NULL,0,'PVPD','Sridham Hall'),('2022-01-21','SOS','20220121-SOS','Principles of Freedom',NULL,NULL,0,'SKKD','AV Hall'),('2022-01-30','FOLK2','20220130-FOLK2','Krishna & Devatas (contd.)',NULL,NULL,0,'PVPD','Sridham Hall'),('2022-01-30','SOS','20220130-SOS','The Law of Karma',NULL,NULL,0,'SKKD','AV Hall'),('2022-02-06','FOLK2','20220206-FOLK2','Vaishnava Etiquette - Part 1',NULL,NULL,0,'SMRD','Sridham Hall'),('2022-02-06','SOS','20220206-SOS','God - Imagination or reality?',NULL,NULL,0,'PVPD','AV Hall'),('2022-02-13','FOLK2','20220213-FOLK2','Vaishnava Etiquette - Part 2',NULL,NULL,0,'VSCD','Sridham Hall'),('2022-02-13','SOS','20220213-SOS','Building Self-Confidence',NULL,NULL,0,'PVPD','AV Hall'),('2022-02-20','FOLK2','20220220-FOLK2','Vaishnava Etiquette - Part 3',NULL,NULL,0,'HRVD','Sridham Hall'),('2022-02-20','SOS','20220220-SOS','Perfect Knowledge',NULL,NULL,0,'PVPD','AV Hall'),('2022-02-26','KLCAMP-22','20220226-KLCAMP-22','Camp Marvel',NULL,NULL,0,NULL,NULL),('2022-02-27','COM','20220227-COM','FACING LIFE\'S CHALLENGES IN BHAGAVAD-GITA WAY',NULL,NULL,0,'SMRD','AV Hall'),('2022-03-06','FOLK2','20220306-FOLK2','Vaishnava Etiquette - Part 4',NULL,NULL,0,'VSCD','Sridham Hall'),('2022-03-06','SOS','20220306-SOS','Handling Competition',NULL,NULL,0,'KSD','AV Hall'),('2022-03-13','FOLK2','20220313-FOLK2','Temple Etiquettes',NULL,NULL,0,'PVPD','Sridham Hall'),('2022-03-13','SOS','20220313-SOS','Real Yoga',NULL,NULL,0,'KSD','AV Hall'),('2022-03-20','WRIB22','20220320-WRIB22','Weekend Retreat @ ISKCON Bangalore 2022',NULL,NULL,0,NULL,NULL),('2022-04-03','FOLK2','20220403-FOLK2','Temple Etiquettes (contd.)',NULL,NULL,0,'SMRD','Sridham Hall'),('2022-04-03','SOS','20220403-SOS','Power of Habits',NULL,NULL,0,'KSD','AV Hall'),('2022-04-16','BRHM22','20220416-BRHM22','Brahmotsava \'22',NULL,NULL,0,NULL,NULL),('2022-04-17','SOS','20220417-SOS','Self-Mangement',NULL,NULL,0,'KSD','AV Hall'),('2022-04-24','FOLK2','20220424-FOLK2','Prasadam (contd.)',NULL,NULL,0,'SKKD','Sridham Hall'),('2022-04-24','SOS','20220424-SOS','The Law of Karma',NULL,NULL,0,'SKKD','AV Hall'),('2022-05-01','FOLK4','20220501-FOLK4','Importance of Disciplic Succession',NULL,NULL,0,'HRVD','Sridham Hall'),('2022-05-01','SOS','20220501-SOS','God - Imagination or reality?',NULL,NULL,0,'PVPD','AV Hall'),('2022-05-08','FOLK2','20220508-FOLK2','Definition of God',NULL,NULL,0,'VSCD','Sridham Hall'),('2022-05-08','FOLK4','20220508-FOLK4','Caitanya Mahaprabhu & Pancha-tattva',NULL,NULL,0,'SMRD','Sridham Hall'),('2022-05-08','SOS','20220508-SOS','Building Self-Confidence',NULL,NULL,0,'KSD','AV Hall'),('2022-05-22','FOLK2','20220522-FOLK2','What is Krishna Consciousness?',NULL,NULL,0,'PVPD','TPH -1'),('2022-05-22','FOLK4','20220522-FOLK4','Three Modes of Material Nature',NULL,NULL,0,'SMRD','TPH -2'),('2022-05-22','SOS','20220522-SOS','Perfect Knowledge',NULL,NULL,0,'KSD','AV Hall'),('2022-05-29','FOLK2','20220529-FOLK2','Vedic Literatures',NULL,NULL,0,'HRVD','Sridham Hall'),('2022-05-29','FOLK4','20220529-FOLK4','Need of Accepting a Spirituall Master',NULL,NULL,0,'VSCD','Sridham Hall'),('2022-05-29','SOS','20220529-SOS','Handling Competition',NULL,NULL,0,'SKKD','AV Hall'),('2022-06-05','FOLK2','20220605-FOLK2','The Hare Krishna Maha Mantra',NULL,NULL,0,'SKKD','Sridham Hall'),('2022-06-05','FOLK4','20220605-FOLK4','Fault Finding',NULL,NULL,0,'HRVD','Sridham Hall'),('2022-06-05','SOS','20220605-SOS','Real Yoga',NULL,NULL,0,'VSCD','AV Hall'),('2022-06-19','FOLK2','20220619-FOLK2','FAQ on the Hare Krishna Maha Mantra',NULL,NULL,0,'VSCD','Sridham Hall'),('2022-06-19','FOLK4','20220619-FOLK4','Guru Issue - Part 1',NULL,NULL,0,'SMRD','Sridham Hall'),('2022-06-19','SOS','20220619-SOS','Power of Habits',NULL,NULL,0,'PVPD','AV Hall'),('2022-06-26','FOLK2','20220626-FOLK2','The Four Regulative Principles',NULL,NULL,0,'PVPD','Sridham Hall'),('2022-06-26','FOLK4','20220626-FOLK4','Why Chant More?',NULL,NULL,0,'PKJD','Sridham Hall'),('2022-06-26','SOS','20220626-SOS','Self-Management',NULL,NULL,0,'HRVD','AV Hall'),('2022-07-03','FOLK2','20220703-FOLK2','Krishna and Devatas',NULL,NULL,0,'HRVD','Sridham Hall'),('2022-07-03','FOLK4','20220703-FOLK4','The Three Lives of King Bharata',NULL,NULL,0,'VSCD','Sridham Hall'),('2022-07-03','SOS','20220703-SOS','Law of Karma',NULL,NULL,0,'SKKD','AV Hall');
 /*!40000 ALTER TABLE `calendar` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,7 +87,7 @@ CREATE TABLE `participation` (
   `eventId` varchar(45) DEFAULT NULL,
   `caller` varchar(45) DEFAULT NULL,
   `response` varchar(45) DEFAULT NULL,
-  `remarks` varchar(45) DEFAULT NULL,
+  `remarks` varchar(200) DEFAULT NULL,
   `attendance` tinyint DEFAULT NULL,
   KEY `participant_idx` (`phone`),
   CONSTRAINT `participant` FOREIGN KEY (`phone`) REFERENCES `people` (`phone`)
@@ -220,6 +223,7 @@ CREATE TABLE `programs` (
 
 LOCK TABLES `programs` WRITE;
 /*!40000 ALTER TABLE `programs` DISABLE KEYS */;
+INSERT INTO `programs` VALUES ('BRHM22','Brahmotsava \'22','Trip',NULL,NULL,NULL,NULL),('COM','Common Session','Workshop',NULL,NULL,NULL,NULL),('FOLK2','FOLK 2','Workshop',NULL,NULL,NULL,NULL),('FOLK4','FOLK 4','Workshop',NULL,NULL,NULL,NULL),('FWRETREAT2021','FOLK Weekend Retreat','Trip',NULL,NULL,NULL,NULL),('GODSUMB','The God\'s Umbrella','Special Event',NULL,NULL,NULL,NULL),('KLCAMP-22','Camp Marvel','Trip',NULL,NULL,NULL,NULL),('PURI2021','Puri Yatra','Trip',NULL,NULL,NULL,NULL),('SANKALP2022','Sankalp 2022','Special Event',NULL,NULL,NULL,NULL),('SOS','Secrets of Success','Workshop',NULL,NULL,NULL,NULL),('WRIB22','Weekend Retreat @ ISKCON Bangalore 2022','Trip',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `programs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,6 +246,7 @@ CREATE TABLE `programtypes` (
 
 LOCK TABLES `programtypes` WRITE;
 /*!40000 ALTER TABLE `programtypes` DISABLE KEYS */;
+INSERT INTO `programtypes` VALUES ('Special Event'),('Trip'),('Workshop');
 /*!40000 ALTER TABLE `programtypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-24 17:02:07
+-- Dump completed on 2022-05-24 17:52:05
