@@ -7,6 +7,7 @@ import Test from './pages/test';
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom"
 import { useEffect } from 'react';
 import NewContact from './pages/newContact';
+import Attendance from './pages/attendance';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/people" element={<People />}></Route>
+          <Route path="/attendance" element={<Attendance />}></Route>
           <Route path="/contact/:filter" element={<NewContact ok={2}/>}></Route>
           <Route path="/test" element={<Test />}></Route>
         </Routes>

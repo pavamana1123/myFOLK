@@ -20,7 +20,7 @@ function SearchBox(props) {
   var searchField = useRef()
   const self = this
 
-  var {onSearch} = props
+  var {onSearch, style} = props
 
   useEffect(()=>{
     if(show){
@@ -44,7 +44,7 @@ function SearchBox(props) {
   }
 
   return (
-    <div>
+    <div style={style}>
       <input className='searchField' ref={searchField} id={show?'show':'hide'} onChange={onSearchChange}/>
       {show?<i className='searchIcon bi bi-x' onClick={onClose}/>:<i className='searchIcon bi bi-search' onClick={onSearchClick}/>}
     </div>
