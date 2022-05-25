@@ -149,7 +149,7 @@ CREATE TABLE `people` (
 
 LOCK TABLES `people` WRITE;
 /*!40000 ALTER TABLE `people` DISABLE KEYS */;
-INSERT INTO `people` VALUES ('1',NULL,'Pavanprana',NULL,NULL,NULL,NULL,'admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'c4ca4238a0b923820dcc509a6f75849b',NULL,NULL);
+INSERT IGNORE INTO `people` VALUES ('1',NULL,'Pavanprana',NULL,NULL,NULL,NULL,'admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'c4ca4238a0b923820dcc509a6f75849b',NULL,NULL);
 /*!40000 ALTER TABLE `people` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +253,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES ('ac','Acountant',4),('admin','Admin',0),('core','Core Member',2),('cv','Calling Volunteer',3),('default','Default',5),('exec','FOLK Executive',1);
+INSERT IGNORE INTO `roles` VALUES ('ac','Acountant',4),('admin','Admin',0),('core','Core Member',2),('cv','Calling Volunteer',3),('default','Default',5),('exec','FOLK Executive',1);
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
