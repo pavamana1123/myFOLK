@@ -43,14 +43,21 @@ function Attendance() {
       <TitleBar title='Attendance'>
         <Input type="date" id="attendanceDate"/>
       </TitleBar>
-      <SearchBox onSearch={onSearch}/>
-      {
+      <Input id="attendanceSearch" placeholder="search participant name or phone">
+        {[
+          <div>0</div>,
+          <div>1</div>,
+          <div>2</div>,
+          <div>3</div>
+        ]}
+      </Input>
+      {/* {
         peopleList.map((p)=>{
           return (
             <div className='contact'>{p.name}</div>
           )
         })
-      }
+      } */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ class API {
     call(req, res) {
 
         var {body} = req
-
+        
         switch(req.get("endpoint")){
             
             case "/test":
@@ -45,10 +45,10 @@ class API {
                   });
 
 
-                case "/people":
-                this.db.query('SELECT * from people order by name', function (error, result) {
+                case "/attendance/people":
+                this.db.query('SELECT name, phone, level from people order by phone', function (error, people) {
                     if (error) throw error;
-                    res.send(result)
+                    
                 });
 
             default:

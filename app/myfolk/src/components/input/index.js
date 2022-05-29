@@ -10,17 +10,24 @@ class InputCtl {
 
 function Input(props) {
 
-  var {id, type, label, placeholder, onBlur, maxLength} = props
+  var {id, type, label, placeholder, onBlur, maxLength, children} = props
 
   return(
     <div>
       <div>{label}</div>
-      <input
-        id={id||label.toCamelCase()}
-        type={type||"text"}
-        maxlength={maxLength}
-        placeholder={placeholder}
-        onBlur={onBlur}/>
+      <div>
+        <input
+          id={id||label.toCamelCase()}
+          type={type||"text"}
+          maxlength={maxLength}
+          placeholder={placeholder}
+          onBlur={onBlur}/>
+          <div className='inputAuto'>
+    	      {children}
+          </div>
+      </div>
+
+
     </div>
   )
 }
