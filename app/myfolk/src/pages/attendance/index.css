@@ -2,3 +2,19 @@
     width: 90%;
     margin: 0 5% 0 5%;
 }
+
+.attendenceContact {
+    border-bottom: 0.0001em #555 solid;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.attendenceContactNamePhone {
+
+}
+
+.attendenceTick {
+    cursor: pointer;
+}

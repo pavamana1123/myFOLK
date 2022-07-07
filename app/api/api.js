@@ -6,14 +6,16 @@ class API {
     call(req, res) {
 
         var {body} = req
+        console.log(`api - ${req.get("endpoint")}`)
         
         switch(req.get("endpoint")){
-            
+
             case "/test":
                 this.db.query('SELECT * from contacts', function (error, result) {
                     if (error) throw error;
                     res.send(result)
                   });
+                  break
 
             case "/login":
                 const {phone, password} = body
@@ -43,13 +45,23 @@ class API {
                             res.send({"error":"User not found"})
                         }
                   });
+                  break
 
 
                 case "/attendance/people":
-                this.db.query('SELECT name, phone, level from people order by phone', function (error, people) {
-                    if (error) throw error;
-                    
-                });
+                    this.db.query('SELECT name, phone, level from people order by phone', function (error, people) {
+                        if (error) throw error;
+                        res.send(people)
+                    });
+                    break
+
+                case "/events":
+                    const {date} = body
+                    this.db.query(`SELECT * from calendar where date<"${date}" order by date desc limit 1`, function (error, events) {
+                        if (error) throw error;
+                        res.send(events)
+                    });
+                    break
 
             default:
         }
