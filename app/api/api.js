@@ -57,7 +57,7 @@ class API {
 
                 case "/events":
                     const {date} = body
-                    this.db.query(`SELECT * from calendar where date<"${date}" order by date desc limit 1`, function (error, events) {
+                    this.db.query(`SELECT * from calendar where date<="${date}" order by date desc limit 1`, function (error, events) {
                         if (error) throw error;
                         res.send(events)
                     });

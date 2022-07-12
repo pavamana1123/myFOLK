@@ -18,6 +18,7 @@ function Attendance() {
     new API().call("/events",{date}).then((res)=>{
         console.log(res.body)
         setEvents(res.body)
+        document.getElementById("attendanceDate").value = moment(res.body[0].date,"yyyy-MM-DDTHH:mm:ss.000Z").format('yyyy-MM-DD')
     })
   }
   
