@@ -50,15 +50,21 @@ function Attendance() {
   }
 
   const markAttendance = (p)=>{
-    new API().call("/attendance/mark",
-      {
-        eventId: "",
-        phone: "",
-        attendance: true
-      }).then((res)=>{
-      setPeople(res.body)
-      setPeopleList(res.body)
-    })
+    for (let i = 0; i < events.length; i++) {
+      console.log(events[i].parent, p.level, events[i].parent==p.level)
+      if(events[i].parent==p.level){
+        new API().call("/attendance/mark",
+          {
+            eventId: events[i].id,
+            phone: p.phone,
+            attendance: true
+          }).then((res)=>{
+          setPeople(res.body)
+          setPeopleList(res.body)
+        })
+        break
+      }
+    }
   }
 
   var self = this
@@ -82,7 +88,7 @@ function Attendance() {
                 <div>{p.name}</div>
                 <div>{p.phone}</div>
               </div>
-              <div className='attendenceTick' onClick={markAttendance.bind(self, p)}>✓</div>
+              <div className='attendenceTick' onClick={markAttendance.bind(self, p)}>{p.level||"SOS"}</div>
             </div>
           )
         })
