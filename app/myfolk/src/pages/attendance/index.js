@@ -50,21 +50,15 @@ function Attendance() {
   }
 
   const markAttendance = (p)=>{
-    for (let i = 0; i < events.length; i++) {
-      console.log(events[i].parent, p.level, events[i].parent==p.level)
-      if(events[i].parent==p.level){
-        new API().call("/attendance/mark",
-          {
-            eventId: events[i].id,
-            phone: p.phone,
-            attendance: true
-          }).then((res)=>{
-          setPeople(res.body)
-          setPeopleList(res.body)
-        })
-        break
-      }
-    }
+      new API().call("/attendance/mark",
+        {
+          level: p.level,
+          phone: p.phone,
+          date: document.getElementById("attendanceDate").value,
+          attendance: true
+        }).then((res)=>{
+      
+      })
   }
 
   var self = this

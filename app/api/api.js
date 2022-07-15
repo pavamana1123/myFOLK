@@ -18,7 +18,7 @@ class API {
                   break
 
             case "/login":
-                const {phone, password} = body
+                var {phone, password} = body
                 this.db.query(`
                     select people.name, people.phone, people.password, roles.roleId, roles.roleName, roles.roleLevel 
                     from people
@@ -48,15 +48,41 @@ class API {
                   break
 
 
-                case "/attendance/people":
-                    this.db.query('SELECT name, phone, level from people order by phone', function (error, people) {
+                case "/attendance/status":
+                    var {date} = body
+
+                    var query = `select eventId from calendar where date="${date}"`
+
+                    this.execQuery(query, (result) => {
+                        // no events on given date
+                        if(result.length==0) return this.sendError(res, 404, "No events found for the given date")
+
+                        var query = `select name, people.phone, level, zone, 
+                        participation.eventId, participation.attendance from people 
+                        left join (select * from participation where eventId in (
+                            select id from calendar where date="${date}"
+                        )) as participation
+                        on people.phone=participation.phone`
+
+                        this.execQuery(query, (result) => {
+                            res.send(result)
+                        })
+                    });
+
+                    break
+
+                case "/attendance/mark":
+                    var {attendance, date, level, phone} = body
+                    this.db.query(`insert into participation (phone, eventId, attendance) values("${phone}",(
+                        select id from calendar where date="${date}" and parent="${level}"
+                    ), ${attendance}) on duplicate key update attendance=${attendance}`, function (error, people) {
                         if (error) throw error;
                         res.send(people)
                     });
                     break
 
                 case "/events":
-                    const {date} = body
+                    var {date} = body
                     this.db.query(`select * from calendar where date=(SELECT date from calendar where date<="${date}" order by date desc limit 1)`, function (error, events) {
                         if (error) throw error;
                         res.send(events)
@@ -65,6 +91,22 @@ class API {
 
             default:
         }
+    }
+
+    execQuery(q, rsp, f){
+        this.db.query(q, (e, rlt) => {
+            if (e) {
+                rsp.status(500)
+                rsp.send(e)
+                return
+            };
+            f(rlt)
+        });
+    }
+
+    sendError(res, code, msg){
+        res.status(code)
+        res.send({"error":msg})
     }
 }
 
