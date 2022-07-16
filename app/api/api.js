@@ -51,20 +51,23 @@ class API {
                 case "/attendance/status":
                     var {date} = body
 
-                    var query = `select eventId from calendar where date="${date}"`
+                    var query = `select id from calendar where date="${date}"`
 
-                    this.execQuery(query, (result) => {
+                    this.execQuery(query, res, (result) => {
                         // no events on given date
                         if(result.length==0) return this.sendError(res, 404, "No events found for the given date")
 
-                        var query = `select name, people.phone, level, zone, 
-                        participation.eventId, participation.attendance from people 
+                        var query = `select participation.name, participation.phone, participation.level, participation.zone,
+                        GROUP_CONCAT(participation.eventId) as eventId, GROUP_CONCAT(calendar.parent) as parent from calendar
+                        right join (select name, people.phone, level, zone, participation.eventId from people 
                         left join (select * from participation where eventId in (
                             select id from calendar where date="${date}"
-                        )) as participation
-                        on people.phone=participation.phone`
+                        ) and attendance=true) as participation                        
+                        on people.phone=participation.phone order by name) as participation
+                        on participation.eventId=calendar.id
+                        group by phone order by name`
 
-                        this.execQuery(query, (result) => {
+                        this.execQuery(query, res, (result) => {
                             res.send(result)
                         })
                     });
