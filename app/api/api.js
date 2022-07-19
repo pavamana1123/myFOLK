@@ -47,63 +47,65 @@ class API {
                   });
                   break
 
+            case "/attendance/people":
+                var {date} = body
+                var query = `select id from calendar where date="${date}"`
 
-                case "/attendance/status":
-                    var {date} = body
+                this.execQuery(query)
+                .then((result) => {
+                    // no events on given date
+                    if(result.length==0) return this.sendError(res, 404, "No events found for the given date")
 
-                    var query = `select id from calendar where date="${date}"`
+                    var query = `select participation.name, participation.phone, participation.level, participation.zone,
+                    GROUP_CONCAT(participation.eventId) as eventId, GROUP_CONCAT(calendar.parent) as parent from calendar
+                    right join (select name, people.phone, level, zone, participation.eventId from people 
+                    left join (select * from participation where eventId in (
+                        select id from calendar where date="${date}"
+                    ) and attendance=true) as participation                        
+                    on people.phone=participation.phone order by name) as participation
+                    on participation.eventId=calendar.id
+                    group by phone order by parent desc, name`
 
-                    this.execQuery(query, res, (result) => {
-                        // no events on given date
-                        if(result.length==0) return this.sendError(res, 404, "No events found for the given date")
+                    return this.execQuery(query)
+                })
+                .then((result)=>{
+                    res.send(result)
+                })
+                .catch((err)=>{this.sendError(res, 500, err)})
 
-                        var query = `select participation.name, participation.phone, participation.level, participation.zone,
-                        GROUP_CONCAT(participation.eventId) as eventId, GROUP_CONCAT(calendar.parent) as parent from calendar
-                        right join (select name, people.phone, level, zone, participation.eventId from people 
-                        left join (select * from participation where eventId in (
-                            select id from calendar where date="${date}"
-                        ) and attendance=true) as participation                        
-                        on people.phone=participation.phone order by name) as participation
-                        on participation.eventId=calendar.id
-                        group by phone order by name`
+                break
 
-                        this.execQuery(query, res, (result) => {
-                            res.send(result)
-                        })
-                    });
+            case "/attendance/mark":
+            var {attendance, date, level, phone} = body
+            this.db.query(`insert into participation (phone, eventId, attendance) values("${phone}",(
+                select id from calendar where date="${date}" and parent="${level}"
+            ), ${attendance}) on duplicate key update attendance=${attendance}`, function (error, people) {
+                if (error) throw error;
+                res.send(people)
+            });
+            break
 
-                    break
-
-                case "/attendance/mark":
-                    var {attendance, date, level, phone} = body
-                    this.db.query(`insert into participation (phone, eventId, attendance) values("${phone}",(
-                        select id from calendar where date="${date}" and parent="${level}"
-                    ), ${attendance}) on duplicate key update attendance=${attendance}`, function (error, people) {
-                        if (error) throw error;
-                        res.send(people)
-                    });
-                    break
-
-                case "/events":
-                    var {date} = body
-                    this.db.query(`select * from calendar where date=(SELECT date from calendar where date<="${date}" order by date desc limit 1)`, function (error, events) {
-                        if (error) throw error;
-                        res.send(events)
-                    });
-                    break
+            case "/events":
+                var {date} = body
+                this.db.query(`select * from calendar where date=(SELECT date from calendar where date<="${date}" order by date desc limit 1)`, function (error, events) {
+                    if (error) throw error;
+                    res.send(events)
+                });
+                break
 
             default:
         }
     }
 
-    execQuery(q, rsp, f){
-        this.db.query(q, (e, rlt) => {
-            if (e) {
-                rsp.status(500)
-                rsp.send(e)
-                return
-            };
-            f(rlt)
+
+    execQuery(q){
+        return new Promise((resolve, reject) => {
+            this.db.query(q, (e, result) => {
+                if (e) {
+                    return reject(e)
+                };  
+                resolve(result)
+            });
         });
     }
 

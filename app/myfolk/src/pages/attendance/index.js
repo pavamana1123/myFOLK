@@ -23,10 +23,12 @@ function Attendance() {
   }
   
   useEffect(()=>{
-    var date = moment().format('yyyy-MM-DD')
+    // var date = moment().format('yyyy-MM-DD')
+    var date = "2022-01-30"
     document.getElementById("attendanceDate").value = date
     getEventsOnDate(date)
-    new API().call("/attendance/people").then((res)=>{
+    new API().call("/attendance/people", {date}).then((res)=>{
+        console.log(res)
         setPeople(res.body)
         setPeopleList(res.body)
     })
@@ -73,22 +75,46 @@ function Attendance() {
       <TitleBar title='Attendance'>
         <Input type="date" id="attendanceDate"/>
       </TitleBar>
-      <Input id="attendanceSearch" placeholder="search participant name or phone" onChange={onContactSearch}>
+      <Input id="attendanceSearch" placeholder="search participant name or phone" onChange={onContactSearch}/>
       {
         peopleList.map((p)=>{
+
+          let label = p.level
+          let parentList = p.parent?p.parent.split(","):[]
+          let parentLevelAffinity = parentList.indexOf(p.level)!=-1
+          let eventLevelAffinity = !!events.filter((e)=>{return e.id=p.level}).length
+
+          switch(parentList.length){
+            case 0: // absent
+              if(!eventLevelAffinity){
+                label=events.length==1?events[0].id:"list"
+              }else{
+                label=p.level
+              }
+              break;
+            case 1: // attended one
+              label=p.parent
+              break;
+            default: // attended more
+              label = "list"
+
+          }
+
+          let backgroundColor = "grey"
+          if(!!p.parent){
+            backgroundColor = "green"
+          }
           return (
             <div className='attendenceContact' key={p.phone}>
               <div className='attendenceContactNamePhone'>
                 <div>{p.name}</div>
                 <div>{p.phone}</div>
               </div>
-              <div className='attendenceTick' onClick={markAttendance.bind(self, p)}>{p.level||"SOS"}</div>
+              <div className='attendenceTick' style={{backgroundColor}} onClick={markAttendance.bind(self, p)}>{label}</div>
             </div>
           )
         })
       }
-      </Input>
-
     </div>
   );
 }
