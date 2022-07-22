@@ -1,0 +1,25 @@
+.atcContact {
+    border-bottom: 0.0001em #555 solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.atcNamePhone {
+    margin: 1vw 0vw 1vw 2vw;
+}
+
+.atcName {
+    font-weight: 700;
+    font-size: 2.75vw;
+    margin-bottom: 1.25vw;
+}
+
+.atcPhone {
+    font-size: 2.25vw;
+    font-weight: 100;
+}
+
+.atcTick {
+    cursor: pointer;
+}

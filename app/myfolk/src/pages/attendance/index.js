@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import API from '../../api';
 import { Input } from '../../components/input';
 import moment from 'moment'
+import ListItem from './listItem';
 
 var pageMenu = new PageMenuCtl()
 
@@ -51,18 +52,6 @@ function Attendance() {
     // document.getElementById("attendanceDate").value = moment().format('DD-MM-yyyy')
   }
 
-  const markAttendance = (p)=>{
-      new API().call("/attendance/mark",
-        {
-          level: p.level,
-          phone: p.phone,
-          date: document.getElementById("attendanceDate").value,
-          attendance: true
-        }).then((res)=>{
-      
-      })
-  }
-
   var self = this
 
   return (
@@ -78,40 +67,8 @@ function Attendance() {
       <Input id="attendanceSearch" placeholder="search participant name or phone" onChange={onContactSearch}/>
       {
         peopleList.map((p)=>{
-
-          let label = p.level
-          let parentList = p.parent?p.parent.split(","):[]
-          let parentLevelAffinity = parentList.indexOf(p.level)!=-1
-          let eventLevelAffinity = !!events.filter((e)=>{return e.id=p.level}).length
-
-          switch(parentList.length){
-            case 0: // absent
-              if(!eventLevelAffinity){
-                label=events.length==1?events[0].id:"list"
-              }else{
-                label=p.level
-              }
-              break;
-            case 1: // attended one
-              label=p.parent
-              break;
-            default: // attended more
-              label = "list"
-
-          }
-
-          let backgroundColor = "grey"
-          if(!!p.parent){
-            backgroundColor = "green"
-          }
           return (
-            <div className='attendenceContact' key={p.phone}>
-              <div className='attendenceContactNamePhone'>
-                <div>{p.name}</div>
-                <div>{p.phone}</div>
-              </div>
-              <div className='attendenceTick' style={{backgroundColor}} onClick={markAttendance.bind(self, p)}>{label}</div>
-            </div>
+            <ListItem name={p.name} phone={p.phone} level={p.level} parent={p.parent} events={events}></ListItem>
           )
         })
       }
