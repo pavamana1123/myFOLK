@@ -2,11 +2,11 @@
     border-bottom: 0.0001em #555 solid;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .atcNamePhone {
     margin: 1vw 0vw 1vw 2vw;
+    flex: 8;
 }
 
 .atcName {
@@ -21,5 +21,11 @@
 }
 
 .atcTick {
+    font-size: 2.75vw;
     cursor: pointer;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 4%;
+    align-items: center;
 }

@@ -42,7 +42,7 @@ function ListItem(props) {
 
     let backgroundColor = "grey"
     if(!!parent){
-      backgroundColor = "green"
+      backgroundColor = "#005c4b"
     }
 
 
