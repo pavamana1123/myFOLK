@@ -19,24 +19,33 @@ function ListItem(props) {
 
     let {name, phone, level, parent, events} = props
 
-    let label = level
+    let list = <i className="bi bi-list"></i>
+    let label, clickFunc, longPressFunc
     let parentList = parent?parent.split(","):[]
-    // let parentLevelAffinity = parentList.indexOf(level)!=-1
+    let parentLevelAffinity = parentList.indexOf(level)!=-1
     let eventLevelAffinity = !!events.filter((e)=>{return e.id=level}).length
 
     switch(parentList.length){
       case 0: // absent
-        if(!eventLevelAffinity){
-          label=events.length==1?events[0].id:"list"
+        if(events.length==1){
+          label = events[0].parent
         }else{
-          label=level
+          if(eventLevelAffinity){
+            label = level
+          }else{
+            label = list
+          }
         }
         break;
       case 1: // attended one
-        label=parent
+        label = parent
         break;
       default: // attended more
-        label = "list"
+        if(parentLevelAffinity){
+          label = `${level}+${parentList.length-1}`
+        }else{
+          label = `${parentList[0]}+${parentList.length-1}`
+        }
 
     }
 
