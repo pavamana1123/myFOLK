@@ -4,7 +4,7 @@ import './index.css';
 function Modal(props) {
   var self = this
 
-  var {title} = props
+  var {title, children} = props
   useEffect(()=>{
   },[])
    
@@ -13,7 +13,7 @@ function Modal(props) {
       <div className="glass dark-glass"/>
       <div className='modalBox'>
         <div className='modalTitle'>{title || "Modal"}</div>
-        <div className='modalBody'>"asdajs dkajsdk"</div>
+        <div className='modalBody'>{children}</div>
       </div>
     </div>
 

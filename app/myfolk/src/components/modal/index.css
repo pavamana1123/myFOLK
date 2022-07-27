@@ -7,9 +7,10 @@
 }
 
 .modalBody {
+  background-color: var(--bg);
 }
 
 .modalTitle {
-  border-bottom: 1px grey solid;
   padding: 2%;
+  background-color: var(--secondaryBg);
 }

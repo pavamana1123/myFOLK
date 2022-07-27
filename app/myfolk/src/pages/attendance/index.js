@@ -9,6 +9,7 @@ import { Input } from '../../components/input';
 import moment from 'moment'
 import ListItem from './listItem';
 import Modal from '../../components/modal';
+import CheckBox from '../../components/checkbox';
 
 var pageMenu = new PageMenuCtl()
 
@@ -66,7 +67,15 @@ function Attendance() {
         <Input type="date" id="attendanceDate"/>
       </TitleBar>
 
-      <Modal/>
+      <Modal title={"Details"}>
+        <CheckBox>
+          {
+            events.map((e)=>{
+              return e.parent
+            })
+          }
+        </CheckBox>
+      </Modal>
 
       <Input id="attendanceSearch" placeholder="search participant name or phone" onChange={onContactSearch}/>
       {
