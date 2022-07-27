@@ -76,13 +76,14 @@ class API {
                 break
 
             case "/attendance/mark":
-            var {attendance, date, level, phone} = body
-            this.db.query(`insert into participation (phone, eventId, attendance) values("${phone}",(
-                select id from calendar where date="${date}" and parent="${level}"
-            ), ${attendance}) on duplicate key update attendance=${attendance}`, function (error, people) {
-                if (error) throw error;
-                res.send(people)
-            });
+            var {attendance, eventId, phone} = body
+            var query = `insert into participation (phone, eventId, attendance) values("${phone}","${eventId}", ${attendance}) on duplicate key update attendance=${attendance}`
+
+            this.execQuery(query)
+            .then((result)=>{
+                res.send(result)
+            })
+            .catch((err)=>{this.sendError(res, 500, err)})
             break
 
             case "/events":
@@ -110,6 +111,7 @@ class API {
     }
 
     sendError(res, code, msg){
+        console.log(msg)
         res.status(code)
         res.send({"error":msg})
     }

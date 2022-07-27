@@ -4,20 +4,17 @@ import './index.css';
 function ListItem(props) {
 
     var self = this
+    let {name, phone, level, parent, events} = props
 
-    const markAttendance = (p)=>{
+    const markAttendance = ()=>{
         new API().call("/attendance/mark",
           {
-            level: p.level,
-            phone: p.phone,
-            date: document.getElementById("attendanceDate").value,
+            phone: phone,
             attendance: true
           }).then((res)=>{
-        
         })
     }
 
-    let {name, phone, level, parent, events} = props
 
     let list = <i className="bi bi-list"></i>
     let label, clickFunc, longPressFunc
@@ -60,7 +57,7 @@ function ListItem(props) {
       <div className='atcName'>{name}</div>
       <div className='atcPhone'>{phone}</div>
     </div>
-    <div className='atcTick' style={{backgroundColor}} onClick={markAttendance.bind(self)}>{label}</div>
+    <div className='atcTick' style={{backgroundColor}} onClick={markAttendance}>{label}</div>
   </div>
 }
 
