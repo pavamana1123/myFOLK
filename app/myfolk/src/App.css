@@ -63,6 +63,11 @@ i {
   z-index: 99;
 }
 
+.dark-glass {
+  background-color: black;
+  opacity: 0.75;
+}
+
 .clickable {
   position: relative;
   overflow: hidden;

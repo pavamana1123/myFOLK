@@ -9,6 +9,7 @@ body {
 
 * {
   font-family: 'Domine', serif;
+  font-size: 3.8vw;
 }
 
 ::-webkit-calendar-picker-indicator {

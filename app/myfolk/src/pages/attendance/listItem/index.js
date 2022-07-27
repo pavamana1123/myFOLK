@@ -51,7 +51,6 @@ function ListItem(props) {
       backgroundColor = "#005c4b"
     }
 
-
     return <div className='atcContact' key={phone}>
     <div className='atcNamePhone'>
       <div className='atcName'>{name}</div>

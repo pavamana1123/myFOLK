@@ -1,0 +1,15 @@
+.modalBox {
+  position: fixed;
+  width: 80vw;
+  z-index: 999;
+  left: 10vw;
+  background-color: #2a3b45;
+}
+
+.modalBody {
+}
+
+.modalTitle {
+  border-bottom: 1px grey solid;
+  padding: 2%;
+}
