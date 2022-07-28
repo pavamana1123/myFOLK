@@ -1,5 +1,6 @@
 .modalBox {
   position: fixed;
+  top: 15vh;
   width: 80vw;
   z-index: 999;
   left: 10vw;

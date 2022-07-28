@@ -15,7 +15,7 @@ function CheckBox(props) {
           return (
             <div className='checkItem'>
               {false?<i className="bi bi-app"></i>:<i className="bi bi-check2-square"></i>}
-              <div className='checkName'>{c.name}</div>
+              <div className='checkName unsel'>{c.name}</div>
             </div>
           )
         })

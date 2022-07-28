@@ -8,8 +8,6 @@ import API from '../../api';
 import { Input } from '../../components/input';
 import moment from 'moment'
 import ListItem from './listItem';
-import Modal from '../../components/modal';
-import CheckBox from '../../components/checkbox';
 
 var pageMenu = new PageMenuCtl()
 

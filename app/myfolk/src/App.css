@@ -83,6 +83,13 @@ span.ripple {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
+.unsel {
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
 @keyframes ripple {
   to {
     transform: scale(4);

@@ -1,10 +1,15 @@
 import API from '../../../api';
 import './index.css';
+import Modal from '../../../components/modal';
+import CheckBox from '../../../components/checkbox';
+import { useState, useCallback } from 'react';
+import { useLongPress, LongPressDetectEvents } from "use-long-press";
 
 function ListItem(props) {
 
     var self = this
     let {name, phone, level, parent, events} = props
+    var [showOptions, setShowOptions] = useState(false)
 
     const markAttendance = ()=>{
         new API().call("/attendance/mark",
@@ -14,6 +19,10 @@ function ListItem(props) {
           }).then((res)=>{
         })
     }
+
+    const bind = useLongPress(() => {
+      setShowOptions(true)
+    });
 
 
     let list = <i className="bi bi-list"></i>
@@ -51,25 +60,27 @@ function ListItem(props) {
       backgroundColor = "#005c4b"
     }
 
-    return <div className='atcContact' key={phone}>
+    return <div className='atcContact unsel' key={phone}>
     <div className='atcNamePhone'>
       <div className='atcName'>{name}</div>
-      <div className='atcPhone'>{phone}</div>
+      <div className='atcPhone'>{phone  }</div>
     </div>
-    <div className='atcTick' style={{backgroundColor}} onClick={markAttendance}>{label}</div>
-    <Modal>
+    <div className='atcTick' style={{backgroundColor}} onClick={markAttendance} {...bind()}>{label}</div>
+
+    {showOptions?
+      <Modal onClose={()=>setShowOptions(false)}>
         <CheckBox>
           {
             events.map((e)=>{
               return {
-                key: e.parent,
-                name: e.parent,
+                key: parent,
+                name: parent,
                 checked: 1
               }
             })
           }
         </CheckBox>
-      </Modal>
+      </Modal>:null}
   </div>
 }
 

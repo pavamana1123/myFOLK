@@ -4,7 +4,7 @@ import './index.css';
 function Modal(props) {
   var self = this
 
-  var {title, children} = props
+  var {title, children, onClose} = props
   useEffect(()=>{
   },[])
    
@@ -15,7 +15,7 @@ function Modal(props) {
         <div className='modalTitle'>
           <div className='modalTitleItems'>
             <span>{title}</span>
-            <i class="bi bi-x-square-fill"></i>
+            <i class="bi bi-x-square-fill" onClick={onClose}></i>
           </div>
         </div>
         <div className='modalBody'>{children}</div>
