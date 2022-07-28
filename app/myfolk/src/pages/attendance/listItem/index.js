@@ -57,6 +57,19 @@ function ListItem(props) {
       <div className='atcPhone'>{phone}</div>
     </div>
     <div className='atcTick' style={{backgroundColor}} onClick={markAttendance}>{label}</div>
+    <Modal>
+        <CheckBox>
+          {
+            events.map((e)=>{
+              return {
+                key: e.parent,
+                name: e.parent,
+                checked: 1
+              }
+            })
+          }
+        </CheckBox>
+      </Modal>
   </div>
 }
 

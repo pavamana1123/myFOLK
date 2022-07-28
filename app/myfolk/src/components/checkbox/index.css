@@ -1,0 +1,20 @@
+.checkItem {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 1%;
+    cursor: pointer;
+}
+
+.checkItem.selected {
+    background-color: var(--secondaryBg);
+}
+
+.checkBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkName {
+    padding: 0 0 0 2%;
+}

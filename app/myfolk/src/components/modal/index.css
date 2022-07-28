@@ -8,9 +8,17 @@
 
 .modalBody {
   background-color: var(--bg);
+  padding: 3%;
+  min-height: 50vw;
 }
 
 .modalTitle {
   padding: 2%;
   background-color: var(--secondaryBg);
+  min-height: 5vw;
+}
+
+.modalTitleItems{
+  display: flex;
+  justify-content: space-between;
 }

@@ -9,13 +9,13 @@ function CheckBox(props) {
   },[])
    
   return (
-    <div>
+    <div className='checkBox'>
       {
         children.map((c)=>{
           return (
-            <div>
+            <div className='checkItem'>
               {false?<i className="bi bi-app"></i>:<i className="bi bi-check2-square"></i>}
-              <div>{c}</div>
+              <div className='checkName'>{c.name}</div>
             </div>
           )
         })
