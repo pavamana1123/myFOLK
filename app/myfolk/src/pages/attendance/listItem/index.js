@@ -21,6 +21,7 @@ function ListItem(props) {
     }
 
     const bind = useLongPress(() => {
+      window.navigator.vibrate(100)
       setShowOptions(true)
     });
 
@@ -68,14 +69,14 @@ function ListItem(props) {
     <div className='atcTick' style={{backgroundColor}} onClick={markAttendance} {...bind()}>{label}</div>
 
     {showOptions?
-      <Modal onClose={()=>setShowOptions(false)}>
+      <Modal onClose={()=>setShowOptions(false)} title="Details">
         <CheckBox>
           {
             events.map((e)=>{
               return {
-                key: parent,
-                name: parent,
-                checked: 1
+                key: e.parent,
+                name: e.parent,
+                checked: parentList.indexOf(e.parent)!=-1
               }
             })
           }

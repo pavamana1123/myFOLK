@@ -14,7 +14,7 @@
 }
 
 .modalTitle {
-  padding: 2%;
+  padding: 2% 2% 2% 4%;
   background-color: var(--secondaryBg);
   min-height: 5vw;
 }
@@ -22,4 +22,5 @@
 .modalTitleItems{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
