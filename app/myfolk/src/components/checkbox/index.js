@@ -1,28 +1,50 @@
 import { useState, useEffect, useRef } from 'react';
 import './index.css';
 
+
+class CheckBoxCtl {
+  constructor(){
+    this.setGetChecks=()=>{}
+  }
+  setShowFunc(f){
+    this.setGetChecks=f
+  }
+}
+
 function CheckBox(props) {
   var self = this
 
   var [selIndex, setSelIndex] = useState(0)
   var {children} = props
-  useEffect(()=>{
-  },[])
+
+  var [checked, setChecked] = useState(children)
 
   const onChangeInt = (i)=>{
     setSelIndex(i)
   }
 
+  useEffect(()=>{
+    props.ctl.setGetChecks(()=>{
+      return checked
+    })
+  },[])
+
   return (
     <div className='checkBox'>
       {
-        children.map((c, i)=>{
+        checked.map((c, i)=>{
           return (
             <div className={`checkItem ${i==selIndex?"selected":""}`} onClick={onChangeInt.bind(self, i)}>
               <div onClick={(e)=>{
                   e.preventDefault()
                   e.stopPropagation()
-                }}>{c.checked?<i className="bi bi-app"></i>:<i className="bi bi-check2-square"></i>}</div>
+                  console.log(i)
+
+                  checked[i].checked = true
+                  console.log(checked)
+                  setChecked(checked)
+
+                }}>{c.checked?<i className="bi bi-check2-square"></i>:<i className="bi bi-app"></i>}</div>
               <div className='checkName unsel' >{c.name}</div>
             </div>
           )
@@ -33,4 +55,4 @@ function CheckBox(props) {
   );
 }
 
-export default CheckBox
+export { CheckBox, CheckBoxCtl };

@@ -1,7 +1,7 @@
 import API from '../../../api';
 import './index.css';
 import Modal from '../../../components/modal';
-import CheckBox from '../../../components/checkbox';
+import {CheckBox, CheckBoxCtl} from '../../../components/checkbox';
 import { useState, useCallback } from 'react';
 import { useLongPress, LongPressDetectEvents } from "use-long-press";
 
@@ -10,6 +10,8 @@ function ListItem(props) {
     var self = this
     let {name, phone, level, parent, events} = props
     var [showOptions, setShowOptions] = useState(false)
+
+    var checkBoxCtl = new CheckBoxCtl()
 
     const markAttendance = ()=>{
         new API().call("/attendance/mark",
@@ -70,7 +72,7 @@ function ListItem(props) {
 
     {showOptions?
       <Modal onClose={()=>setShowOptions(false)} title="Details">
-        <CheckBox>
+        <CheckBox ctl={checkBoxCtl}>
           {
             events.map((e)=>{
               return {
