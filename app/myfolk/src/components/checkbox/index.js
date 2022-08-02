@@ -12,6 +12,9 @@ class CheckBoxCtl {
 }
 
 function CheckBox(props) {
+
+  console.log("running")
+
   var self = this
 
   var [selIndex, setSelIndex] = useState(0)
@@ -35,15 +38,9 @@ function CheckBox(props) {
         checked.map((c, i)=>{
           return (
             <div className={`checkItem ${i==selIndex?"selected":""}`} onClick={onChangeInt.bind(self, i)}>
-              <div onClick={(e)=>{
-                  e.preventDefault()
-                  e.stopPropagation()
-                  console.log(i)
-
-                  checked[i].checked = true
-                  console.log(checked)
-                  setChecked(checked)
-
+              <div onClick={()=>{
+                  children[i].checked = !c.checked
+                  setChecked(children)
                 }}>{c.checked?<i className="bi bi-check2-square"></i>:<i className="bi bi-app"></i>}</div>
               <div className='checkName unsel' >{c.name}</div>
             </div>
