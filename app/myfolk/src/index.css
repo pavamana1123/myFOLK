@@ -4,12 +4,15 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121b22;
+  background-color: #e7ebf0;
 }
 
 * {
   font-family: 'Domine', serif;
-  font-size: 3.8vw;
+}
+
+div {
+  color: black;
 }
 
 ::-webkit-calendar-picker-indicator {
