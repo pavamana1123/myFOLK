@@ -75,6 +75,72 @@ class API {
 
                 break
 
+            case "/sync":
+
+            var self = this
+
+                var request = require("request");
+                var options = { method: 'POST',
+                url: 'https://vol.iskconmysore.org/api',
+                headers: 
+                { 
+                    'cache-control': 'no-cache',
+                    'content-type': 'application/json' 
+                },
+                body: { func: 'myfolk' },
+                json: true };
+
+                var data = {}
+
+                request(options, function (error, response, body) {
+                    if (error) throw new Error(error);
+                    if (body.error) throw new Error(body.error);
+
+                    data = body.data
+
+                    if(data===undefined){
+                        throw new Error("empty body");
+                    }
+
+                    var tables = [
+                        "participation",
+                        "registrations",
+                        "contacts",
+                        "calendar",
+                        "programs",
+                        "preachers"
+                    ]
+    
+                    query = `${tables.map(t=>{
+                        return `delete from ${t}`
+                    }).join(`;
+                    `)};
+
+                    ${tables.reverse().map(t=>{
+                        var headers = Object.keys(data[t][0]).sort()
+                        return `INSERT INTO ${t} (${headers.join(",")})
+                                VALUES
+                                    ${data[t].map(r=>{
+                                        return `(${headers.map(h=>{
+                                            return !!r[h]?(typeof r[h]=="string"?`"${r[h]}"`:r[h]):"NULL"
+                                        }).join()})`
+                                    }).join(`,
+                                    `)}`
+                    }).join(`;
+                    
+                    `)}`
+
+                    self.execQuery(query)
+                    .then((result) => {
+                        res.send()
+                    })
+                    .catch((err)=>{self.sendError(res, 500, err)})
+                });
+
+            break
+
+                
+
             case "/attendance/mark":
             var {attendance, eventId, phone} = body
             var query = `insert into participation (phone, eventId, attendance) values("${phone}","${eventId}", ${attendance}) on duplicate key update attendance=${attendance}`
@@ -111,7 +177,6 @@ class API {
     }
 
     sendError(res, code, msg){
-        console.log(msg)
         res.status(code)
         res.send({"error":msg})
     }
