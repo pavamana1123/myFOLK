@@ -5,9 +5,9 @@
 .appHeader {
     position: relative;
     display: flex;
-    height: 10vw;
+    height: 12vw;
     width: 100%;
-    background-color: var(--secondaryBg);
+    background-color: var(--bar);
     align-items: center;
     justify-content: space-between;
 }

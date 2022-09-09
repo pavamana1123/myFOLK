@@ -1,5 +1,5 @@
 .titlebar_title {
-    font-size: 4vw;
+    font-size: 4.5vw;
     color: white;
     margin-left: 2vw;
     font-weight: bold;
@@ -10,7 +10,7 @@
     display: flex;
     height: 10vw;
     width: 100%;
-    background-color: var(--secondaryBg);
+    background-color: var(--bar);
     align-items: center;
     justify-content: space-between;
 }

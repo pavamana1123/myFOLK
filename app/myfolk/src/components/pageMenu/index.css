@@ -3,14 +3,14 @@
     z-index: 100;
     right: 0;
     width: 50%;
-    background-color: var(--secondaryBg);
+    background-color: white;
+    color: black;
     transform-origin: 100% 0%;
     transition: transform .3s ease-in-out, opacity .3s ease-in-out;
     box-shadow: #0005 2px 2px 10px;
 }
 
 .pageMenuItem {
-    color: white;
     padding: 3vw;
 }
 

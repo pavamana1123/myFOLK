@@ -16,8 +16,6 @@ function Contacts() {
       }}/> 
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
       <TitleBar title='Contacts'>
-        <SearchBox onSearch={()=>{}}/>
-        <i className='bi bi-plus' style={{transform:'scale(1.5)'}}></i>
       </TitleBar>
     </div>
   );
