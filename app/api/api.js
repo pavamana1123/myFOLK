@@ -130,9 +130,11 @@ class API {
                     
                     `)}`
 
+                    console.log(new Date(), "Query START")
                     self.execQuery(query)
                     .then((result) => {
-                        res.send()
+                        console.log(new Date(), "Query END")
+                        res.send(result)
                     })
                     .catch((err)=>{self.sendError(res, 500, err)})
                 });
