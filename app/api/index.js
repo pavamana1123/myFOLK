@@ -8,12 +8,12 @@ var cred = require("./cred.js")
 cred.database = 'iskconmy_folk'
 
 var mysql = require('mysql');
-var con = mysql.createConnection(cred);
+var con = mysql.createPool(cred);
 
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected to db!");
-});
+// con.connect(function(err) {
+//   if (err) throw err;
+//   console.log("Connected to db!");
+// });
 
 const api = new API(con)
 
