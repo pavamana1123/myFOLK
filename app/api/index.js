@@ -5,18 +5,15 @@ const port = 3005
 
 const API  = require("./api.js")
 var cred = require("./cred.js")
+
 cred.database = 'iskconmy_folk'
+cred.connectionLimit = 100
+cred.multipleStatements = true
 
 var mysql = require('mysql');
 var con = mysql.createPool(cred);
 
-// con.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected to db!");
-// });
-
 const api = new API(con)
-
 app.post('/data', api.call.bind(api))
 
 app.listen(port, () => {

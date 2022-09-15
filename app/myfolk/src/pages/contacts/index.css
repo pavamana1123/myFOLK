@@ -1,9 +1,14 @@
-.attendenceSearchHolder {
-    display: grid;
-    justify-items: center;
+#contactList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.attendenceSearchInput {
-    width: 70%;
-    margin-top: 5vw;
+.contactItem {
+    margin: 2vw 0 2vw 0;
+}
+
+.contactItemHolder {
+    display: flex;
+    justify-content: space-between;
 }

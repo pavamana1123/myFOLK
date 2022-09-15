@@ -1,0 +1,14 @@
+.autoIn {
+    background-color: white;
+    border: none;
+}
+
+.autoInHolder {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.autoInRoot {
+    height: 7vw;
+}

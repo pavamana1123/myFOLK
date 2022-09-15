@@ -6,6 +6,7 @@ class API {
     call(req, res) {
 
         var {body} = req
+        var self = this
         console.log(`api - ${req.get("endpoint")}`)
         
         switch(req.get("endpoint")){
@@ -130,10 +131,8 @@ class API {
                     
                     `)}`
 
-                    console.log(new Date(), "Query START")
                     self.execQuery(query)
                     .then((result) => {
-                        console.log(new Date(), "Query END")
                         res.send(result)
                     })
                     .catch((err)=>{self.sendError(res, 500, err)})
@@ -141,7 +140,26 @@ class API {
 
             break
 
-                
+            case "/contacts":
+
+                var tables = [
+                    "contacts",
+                    "participation",
+                    "calendar"
+                ]
+
+                var query = `select * from contacts order by name;
+                select * from participation;
+                select * from calendar`
+                self.execQuery(query)
+                .then((result) => {
+                    var dat = {}
+                    tables.forEach((t,i)=>{
+                        dat[t]=result[i]
+                    })
+                    res.send(dat)
+                })
+                break    
 
             case "/attendance/mark":
             var {attendance, eventId, phone} = body

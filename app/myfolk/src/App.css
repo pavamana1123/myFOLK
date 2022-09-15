@@ -105,3 +105,11 @@ span.ripple {
   color: #555;
 }
 
+.pageRoot {
+  max-height: 90vh;
+  overflow: scroll;
+}
+
+.actionButton  {
+  color: var(--green)
+}
