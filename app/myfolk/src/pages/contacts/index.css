@@ -13,16 +13,16 @@
     justify-content: space-between;
 }
 
-#searchBox {
-    display: flex;
-    border: 0.5vw #ccc solid;
-    width: 90vw;
-    border-radius: 2vw;
-    margin: 4vw 0 4vw 0;
-}
 
 #searchBoxHolder {
+    margin: 4vw 0 4vw 0;
+    width: 90vw;
+    border: 0.5vw #ccc solid;
     display: flex;
+    overflow: hidden;
+    border-radius: 2vw;
+    height: 8vw;
+    background-image: linear-gradient(to right, var(--surface), white);
 }
 
 #searchInput{
@@ -30,10 +30,15 @@
     width: 100%;
     background-color: white;
     border: none;
+    padding-left: 3vw;
+    box-shadow: 0vw 0vw 2vw -1px #ccc inset;
 }
 
-.fieldIcon {
-    width: 100vw;
-    color: white;
-    background-color:var(--surface);
+#fieldFilter {
+    display: flex;
+    background-color: var(--surface);
+    justify-content: center;
+    width: 15%;
+    cursor: pointer;
+    user-select: none;
 }

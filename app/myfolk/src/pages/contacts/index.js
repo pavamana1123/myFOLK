@@ -31,9 +31,9 @@ function Contacts() {
 
       <div id="contactsRoot" className='pageRoot'>
 
-        <div id="searchBox">
+        <div>
           <div id="searchBoxHolder">
-            <div id="fieldFilter"><i className="bi bi-person-fill fieldIcon"></i></div>
+            <div id="fieldFilter"><i className="bi bi-person-fill"></i></div>
             <input id="searchInput"/>
           </div>
         </div>
