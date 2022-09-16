@@ -12,3 +12,28 @@
     display: flex;
     justify-content: space-between;
 }
+
+#searchBox {
+    display: flex;
+    border: 0.5vw #ccc solid;
+    width: 90vw;
+    border-radius: 2vw;
+    margin: 4vw 0 4vw 0;
+}
+
+#searchBoxHolder {
+    display: flex;
+}
+
+#searchInput{
+    color: black;
+    width: 100%;
+    background-color: white;
+    border: none;
+}
+
+.fieldIcon {
+    width: 100vw;
+    color: white;
+    background-color:var(--surface);
+}

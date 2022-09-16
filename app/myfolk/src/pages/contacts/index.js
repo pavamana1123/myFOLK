@@ -28,7 +28,16 @@ function Contacts() {
       <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
       <TitleBar title='Contacts'>
       </TitleBar>
+
       <div id="contactsRoot" className='pageRoot'>
+
+        <div id="searchBox">
+          <div id="searchBoxHolder">
+            <div id="fieldFilter"><i className="bi bi-person-fill fieldIcon"></i></div>
+            <input id="searchInput"/>
+          </div>
+        </div>
+
         <div id="contactList">
           {
             contacts.map(c=>{
