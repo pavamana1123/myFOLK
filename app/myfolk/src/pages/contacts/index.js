@@ -5,17 +5,22 @@ import Paper from "../../components/paper"
 import {PageMenu, PageMenuCtl} from '../../components/pageMenu';
 import { useEffect, useState } from 'react';
 import API from "../../api"
+import SearchBox from './searchBox';
+import searchKeys from './searchKeys';
 
 var pageMenu = new PageMenuCtl()
 
 function Contacts() {
 
   var [contacts, setContacts] = useState([])
+  var [dispContacts, setDispContacts] = useState(contacts)
+  var [searchKey, setSearchKey] = useState("name")
 
   useEffect(()=>{
     new API().call("/contacts").then((res)=>{
       var {contacts} = res.body
       setContacts(contacts)
+      setDispContacts(contacts)
   })
   },[])
 
@@ -25,22 +30,27 @@ function Contacts() {
         pageMenu.position('.5vw','6.5vh')
         pageMenu.show()
       }}/> 
-      <PageMenu list={[1,2,3,4]} ctl={pageMenu}/>
+      <PageMenu list={[1,1,2,4]} ctl={pageMenu}/>
       <TitleBar title='Contacts'>
       </TitleBar>
 
       <div id="contactsRoot" className='pageRoot'>
 
-        <div>
-          <div id="searchBoxHolder">
-            <div id="fieldFilter"><i className="bi bi-person-fill"></i></div>
-            <input id="searchInput"/>
-          </div>
-        </div>
+        <SearchBox 
+          searchKeys={searchKeys}
+          defaultSearchKey="name"
+          onSearchKeyChange={setSearchKey}
+          list={contacts.map((c)=>{
+            return c[searchKey]
+          })} onChange={(inputText)=>{
+            setDispContacts(contacts.filter((c)=>{
+              return `${c[searchKey]}`.toLowerCase().includes(inputText)
+          }))
+        }} disableAuto/>
 
         <div id="contactList">
           {
-            contacts.map(c=>{
+            dispContacts.map(c=>{
               return <Paper key={c.phone} className='contactItem'>
                 <div className='contactItemHolder'>
                   <div>

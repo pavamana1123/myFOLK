@@ -102,8 +102,6 @@ span.ripple {
 }
 
 .pageRoot {
-  max-height: 90vh;
-  overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;

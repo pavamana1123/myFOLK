@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-height: 90vh;
+    overflow: scroll;
 }
 
 .contactItem {
@@ -11,34 +13,4 @@
 .contactItemHolder {
     display: flex;
     justify-content: space-between;
-}
-
-
-#searchBoxHolder {
-    margin: 4vw 0 4vw 0;
-    width: 90vw;
-    border: 0.5vw #ccc solid;
-    display: flex;
-    overflow: hidden;
-    border-radius: 2vw;
-    height: 8vw;
-    background-image: linear-gradient(to right, var(--surface), white);
-}
-
-#searchInput{
-    color: black;
-    width: 100%;
-    background-color: white;
-    border: none;
-    padding-left: 3vw;
-    box-shadow: 0vw 0vw 2vw -1px #ccc inset;
-}
-
-#fieldFilter {
-    display: flex;
-    background-color: var(--surface);
-    justify-content: center;
-    width: 15%;
-    cursor: pointer;
-    user-select: none;
 }
