@@ -24,8 +24,7 @@ function SearchBox(props) {
                 onChange(inputRef.current.value)
             }else{
                 setDisplayList(list.filter((le)=>{
-                    le=`${le}`
-                    return le.includes(inputRef.current.value)
+                    return `${le}`.toLowerCase().includes(inputRef.current.value.toLowerCase())
                 }))
             }
           }}/>

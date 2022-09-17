@@ -44,7 +44,7 @@ function Contacts() {
             return c[searchKey]
           })} onChange={(inputText)=>{
             setDispContacts(contacts.filter((c)=>{
-              return `${c[searchKey]}`.toLowerCase().includes(inputText)
+              return `${c[searchKey]}`.toLowerCase().includes(inputText.toLowerCase())
           }))
         }} disableAuto/>
 
